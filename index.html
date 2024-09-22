@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital@0;1&display=swap">
+    <link rel="stylesheet" href="./stiles.css/estilo.css">
+    <link rel="icon" type="image/jpg" href="./img/logo.2.png">
+    <title>Portafolio</title>
+</head>
+<body>
+    <!--Menu-->
+    <div class="contenedor-header">
+        <header>
+            <div class="logo">
+                <a href="#">Robinson</a>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#inicio" onclick="seleccionar()">Inicio</a></li>
+                    <li><a href="#sobremi" onclick="seleccionar()">Sobre mí</a></li>
+                    <li><a href="#skills" onclick="seleccionar()">Skills</a></li>
+                    <li><a href="#curriculum" onclick="seleccionar()">Currículum</a></li>
+                    <li><a href="#portfolio" onclick="seleccionar()">Portafolio</a></li>
+                    <li><a href="#contacto" onclick="seleccionar()">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+    </div>
+
+    <!-- Sección de inicio -->
+    <section id="inicio" class="inicio">
+        <div class="contenido-banner">
+            <div class="contenedor-img">
+                <img src="img/Im 2.jpg" alt="Robinson Rodriguez">
+            </div>
+            <h1>Robinson Rodriguez</h1>
+            <h2>Estudiante de Ingeniería en Sistemas</h2>
+            <div class="redes">
+                <a href="https://www.facebook.com/profile.php?id=100010939329666" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/robinson-estiben-rodriguez-albarracin-9b970530a/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/573104932777" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre mí -->
+    <section id="sobremi" class="sobremi">
+        <div class="contenido-section">
+            <h2>Sobre mí</h2>
+            <p><span> Hola, soy Robinson Rodriguez</span>.
+                Mi entusiasmo por la tecnología me lleva a explorar constantemente nuevas herramientas y lenguajes de programación. Me encanta resolver problemas y crear soluciones creativas. Además, siempre estoy al tanto de las últimas tendencias en el mundo de la informática. La programación es mi pasión y mi forma de dar vida a ideas innovadoras. 🚀💻</p>
+            
+            <div class="fila">
+                <!-- Datos personales -->
+                <div class="col">
+                    <h3>Datos personales</h3>
+                    <ul>
+                        <li><strong>Fecha de nacimiento:</strong> 11/05/2003</li>
+                        <li><strong>Teléfono:</strong> 3104932777</li>
+                        <li><strong>Email:</strong> robinsonestibenrodriguez1234@gmail.com</li>
+                        <li><strong>Dirección:</strong> Carrera 78c Número 71c 28 Sur</li>
+                    </ul>
+                </div>
+
+                 <!-- Intereses -->
+                 <div class="col">
+                    <h3>Intereses</h3>
+                    <div class="contenedor-intereses">
+                        <div class="interes">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>Juegos</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-tractor"></i>
+                            <span>Agricultura</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-motorcycle"></i>
+                            <span>Viajar</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-brands fa-windows"></i>
+                            <span>Windows</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-person-biking"></i>
+                            <span>Deporte</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-book"></i>
+                            <span>Leer</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Fotos</span>
+                        </div>
+                        <div class="interes">
+                            <i class="fa-solid fa-headphones"></i>
+                            <span>Música</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button>
+                <a href="./img/Hoja de vida St.pdf" download>
+                    Descargar CV <i class="fa-solid fa-download"></i>
+                    <span class="overlay"></span>
+                </a>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección Skills -->
+    <section id="skills" class="skills">
+        <div class="contenido-section">
+            <h2>Skills</h2>
+            <div class="fila">
+                <!-- Technical skills -->
+                <div class="col">
+                    <h3>Technical Skills</h3>
+                    <div class="skill">
+                        <span>JavaScript</span>
+                        <div class="barra-skill">
+                            <div class="progreso ">
+                                <span>40%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>HTML & CSS</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>70%</span>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="skill">
+                        <span>Photoshop</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>45%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>WordPress</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>30%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Professional Skills -->
+                <div class="col">
+                    <h3>Professional Skills</h3>
+                    <div class="skill">
+                        <span>Comunicación</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Trabajo en equipo</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>75%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Creatividad</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>90%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <span>Dedicación</span>
+                        <div class="barra-skill">
+                            <div class="progreso">
+                                <span>95%</span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Seccion Curriculum-->
+    <section id="curriculum" class="curriculum">
+        <div class="contenido-section">
+            <h2>Curriculum</h2>
+            <div class="fila">
+                <div class="col izquierda">
+                    <h3>Educación</h3>
+                    <div class="item izq">
+                        <h4>Tecnico en sistemas</h4>
+                        <span class="casa">Sena</span>
+                        <span class="fecha">2017-2019</span>
+                        <p>I.E.D Talauta, convenio con el Sena</p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                    <div class="item izq">
+                        <h4>Normalista Superior</h4>
+                        <span class="casa">Normal Superior de Icononzo</span>
+                        <span class="fecha">2019-2012</span>
+                        <p>Instituto de educación superior enfocado en la pedagogía y el desarrollo de habilidades sociales. </p>
+                        <div class="conectori">
+                            <div class="circuloi"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col derecha">
+                    <h3>Experiencia </h3>
+                    <div class="item der">
+                        <h4>Tecnico en sistemas</h4>
+                        <span class="casa">Sena</span>
+                        <span class="fecha">2017-2019</span>
+                        <p>I.E.D Talauta, convenio con el Sena</p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+                    <div class="item der">
+                        <h4>Docente de Basica Primaria </h4>
+                        <span class="casa">Gimnasio Martín Galeano</span>
+                        <span class="fecha">2019-2022</span>
+                        <p>Gimnasio Martín Galeano, un centro de educación básica primaria enfocado en la pedagogía y el desarrollo de habilidades sociales.  A través de métodos pedagógicos innovadores y el uso efectivo de la tecnología. </p>
+                        <div class="conectord">
+                            <div class="circulod"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!--section porfolio-->
+   
+           
+        </div>
+    </section>
+    
+<!-- Section porfolio -->
+<section id="portfolio" class="portfolio">
+    <div class="contenido-seccion">
+        <h2>Portafolio</h2>
+
+        <!-- Galería de proyectos -->
+        <div class="galeria">
+
+            <!-- Proyecto 1 -->
+            <div class="proyecto">
+                <img src="./imagenes/Check.webp" alt="Listado de tareas">
+                <div class="overlay">
+                    <h3>Listado de tareas</h3>
+                    <p>Programación</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 2 -->
+            <div class="proyecto">
+                <img src="./Imagenes/Convertidor.webp" alt="Projects">
+                <div class="overlay">
+                    <h3>Projects</h3>
+                    <p>Habilidades de programación</p>
+                </div>
+            </div>
+
+            <!-- Proyecto 3 -->
+            <div class="proyecto">
+                <img src="./Imagenes/sudoku.jpg" alt="Proyectos por hacer">
+                <div class="overlay">
+                    <h3>Sudoku</h3>
+                    <p>Tentativa de 7 proyectos...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+    
+    <!-- footer -->
+    <footer class="pie-pagina">
+        <a href="#inicio" class="arriba">
+            <i class="fa-solid fa-angles-up"></i>
+        </a>
+       
+            <div class="grupo-1">
+                <div class="box">
+                    <figure>
+                        <a href="#">
+                            <img src="./img/logo.2.png" alt="Logo ">
+                        </a>
+                    </figure>
+                </div>
+                <div class="box">
+                    <h2>SOBRE MÍ</h2>
+                    <p>¡Hola! Soy Robinson Rodríguez.</p>
+                    <P> un apasionado de la tecnología y la programación. 
+                    Me encanta aprender nuevas herramientas y lenguajes para crear soluciones innovadoras.</P>
+                    <P>¡Gracias por visitar mi portafolio! 🚀💻</P>
+                </div>
+                <div class="box">
+                    <h2>SIGUEME</h2>
+                    <div class="red-social">
+                        <div class="redes">
+                            <a href="https://www.facebook.com/profile.php?id=100010939329666"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#"><i class="fa-brands fa-skype"></i></a>
+                            <a href="https://www.linkedin.com/in/robinson-estiben-rodriguez-albarracin-9b970530a/"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://wa.me/573104932777" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                
+                    </div>
+                </div>
+            </div>   
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2021 <b>SLee Dw</b> - Todos los Derechos Reservados.</small>
+        </div>
+    </footer>
+
+    <script src="./doc.js/script.js"></script>
+</body>
+</html>
