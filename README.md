@@ -1,45 +1,40 @@
 # Robinson.es
 
-Portafolio personal y profesional que muestra mis proyectos, habilidades y experiencia en desarrollo web.
+Portafolio personal y profesional donde presento mis proyectos, habilidades técnicas y experiencia en desarrollo web.
 
 ## Sitio Web
 
-Puedes acceder al portafolio en: **https://frixix.github.io/Robinson.es/**
+Accede al portafolio aquí:  
+https://frixix.github.io/Robinson.es/
 
 ## Descripción
 
-Robinson.es es un sitio web moderno y responsivo diseñado para presentar mi trabajo profesional. Incluye información sobre mis proyectos, habilidades técnicas y una forma de contactarme.
+Robinson.es es un sitio web moderno y responsivo diseñado para mostrar mi perfil profesional en el área de tecnología y desarrollo web. Incluye información sobre mis habilidades técnicas, experiencia, proyectos realizados y medios de contacto.
 
 ## Estructura del Proyecto
 
-```
 Robinson.es/
-├── index.html           # Página principal
-├── README.md            # Este archivo
+├── index.html # Página principal
+├── README.md # Documentación del proyecto
 ├── stiles.css/
-│   └── estilo.css       # Estilos principales
+│ └── estilo.css # Estilos principales
 ├── doc.js/
-│   └── script.js        # Lógica del sitio
-├── Imagenes/            # Carpeta de imágenes
-├── img/                 # Carpeta adicional de recursos
-```
+│ └── script.js # Lógica del sitio
+├── Imagenes/ # Recursos gráficos del portafolio
+├── img/ # Imágenes y recursos adicionales
+
 
 ## Tecnologías Utilizadas
 
-- **HTML5**: Estructura semántica
-- **CSS3**: Estilos y diseño responsivo
-- **JavaScript**: Interactividad y funcionalidad dinámica
-
-## Cómo Usar
-
-1. Clona o descarga este repositorio
-2. Abre el archivo `index.html` en tu navegador
-3. Navega por el portafolio para explorar mis proyectos
+- HTML5 — Estructura semántica  
+- CSS3 — Diseño visual y responsive  
+- JavaScript — Interactividad y animaciones  
 
 ## Contacto
 
-Si tienes preguntas o propuestas, no dudes en contactarme a través de las redes sociales o el formulario de contacto en el sitio web.
+Correo: robinsonestibenrodriguez1234@gmail.com  
+Sitio web: https://frixix.github.io/Robinson.es/
 
 ---
 
-**Última actualización**: 16 de febrero de 2026
+Última actualización: 16 de febrero de 2026
