@@ -365,7 +365,8 @@
         </div>
     </div>
 </section>
-                <!-- SECCION CONTACTO -->
+            <!-- SECCION CONTACTO -->
+            <!-- SECCION CONTACTO -->
             <section id="contacto" class="contacto">
                 <div class="contenido-seccion">
                     <h2>Contacto</h2>
@@ -373,15 +374,24 @@
                     <div class="fila">
                         <!-- COLUMNA FORMULARIO -->
                         <div class="col">
-                            <input type="text" placeholder="Nombre y Apellido" required>
-                            <input type="email" placeholder="Correo electrónico" required>
-                            <input type="text" placeholder="Asunto" required>
-                            <textarea placeholder="Mensaje" rows="6" required></textarea>
 
-                            <button type="submit">
-                                Enviar mensaje
-                                <span class="overlay"></span>
-                            </button>
+                            <form action="https://formspree.io/f/xldrynly" method="POST">
+
+                                <input type="text" name="nombre" placeholder="Nombre y Apellido" required>
+
+                                <input type="email" name="email" placeholder="Correo electrónico" required>
+
+                                <input type="text" name="asunto" placeholder="Asunto" required>
+
+                                <textarea name="mensaje" placeholder="Mensaje" rows="6" required></textarea>
+
+                                <button type="submit">
+                                    Enviar mensaje
+                                    <span class="overlay"></span>
+                                </button>
+
+                            </form>
+
                         </div>
 
                         <!-- COLUMNA INFORMACIÓN -->
