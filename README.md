@@ -13,16 +13,15 @@ Robinson.es es un sitio web moderno y responsivo diseñado para mostrar mi perfi
 
 ## Estructura del Proyecto
 
-Robinson.es/
-├── index.html # Página principal
-├── README.md # Documentación del proyecto
-├── stiles.css/
-│ └── estilo.css # Estilos principales
-├── doc.js/
-│ └── script.js # Lógica del sitio
-├── Imagenes/ # Recursos gráficos del portafolio
-├── img/ # Imágenes y recursos adicionales
-
+Robinson.es
+ ├─ index.html
+ ├─ styles.css
+ │   └─ estilo.css
+ ├─ img
+ ├─ doc.js
+ │   └─ script.js
+ └─ Hoja de vida
+     └─ CV_ROBINSON_RODRIGUEZ.pdf
 
 ## Tecnologías Utilizadas
 

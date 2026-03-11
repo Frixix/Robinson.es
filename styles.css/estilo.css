@@ -505,81 +505,119 @@ html {
     position: relative;
     bottom: 4px;
 }
-/*section portfolio*/
+/* ========================= */
+/* SECCION PORTFOLIO */
+/* ========================= */
+
 .portfolio {
     background-color: #0f3454;
     color: #ffffff;
-    padding: 50px 20px;
+    padding: 70px 20px;
 }
 
 .portfolio .contenido-section {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
 }
 
 .portfolio h2 {
-    font-size: 48px;
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 42px;
     text-align: center;
-    padding: 20px 0;
-    font-size: 36px;
-    margin-bottom: 30px;
-    color: #ffffff;
+    margin-bottom: 50px;
 }
 
-.galeria {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+/* GRID DE PROYECTOS */
+
 .portfolio .galeria {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
-.portfolio .galeria .proyecto{
+
+/* TARJETA DEL PROYECTO */
+
+.portfolio .proyecto {
     position: relative;
-    max-width: 340px;
-    height: fit-content;
-    margin: 10px;
+    overflow: hidden;
+    border-radius: 12px;
     cursor: pointer;
+    background-color: #000;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.portfolio .galeria .proyecto img{
+
+.portfolio .proyecto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* IMAGEN */
+
+.portfolio .proyecto img {
     width: 100%;
-    display: block;
-    width: 100%;
-    height: 100%;
+    height: 220px;
     object-fit: cover;
-    transition: transform 3s ease;
+    display: block;
+    transition: transform 0.5s ease;
 }
 
+.portfolio .proyecto:hover img {
+    transform: scale(1.08);
+}
 
-.portfolio .galeria .proyecto .overlay{
+/* OVERLAY */
+
+.portfolio .overlay {
     position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    background: linear-gradient(rgba(48, 50, 70, 0.8), rgba(0, 0, 24, 0.8));
-    display: flex;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.9)
+    );
     
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    transition: 1s;
-    font-size: 18px;
-    letter-spacing: 3px;
+    justify-content: flex-end;
+    padding: 20px;
+
     opacity: 0;
+    transition: opacity 0.4s ease;
 }
-.portfolio .galeria .proyecto .overlay h3{
-    margin-bottom: 20px;
-    transition: 1s;
-}
-.portfolio .galeria .proyecto .overlay:hover{
+
+.portfolio .proyecto:hover .overlay {
     opacity: 1;
 }
-.portfolio .galeria .proyecto .overlay:hover h3{
-    margin-bottom: 0px; 
+
+/* TEXTO */
+
+.portfolio .overlay h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.portfolio .overlay p {
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+/* BOTON */
+
+.portfolio .overlay a {
+    margin-top: 12px;
+    align-self: flex-start;
+
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #1CB698;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 4px;
+
+    transition: background 0.3s;
+}
+
+.portfolio .overlay a:hover {
+    background-color: #1CB698;
 }
 .contacto {
     background: linear-gradient(to top, rgba(30, 35, 38, 0.85), rgba(30, 35, 38, 0.95)),
