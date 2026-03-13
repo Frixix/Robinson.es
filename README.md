@@ -22,7 +22,7 @@ Robinson.es
 │   └─ script.js
 │
 └─ img/
-    └─ Proyectos/
+    └─ proyectos/
         └─ inventario_2.0/
             ├─ img1.png
             ├─ img2.png
@@ -41,4 +41,4 @@ Sitio web: https://frixix.github.io/Robinson.es/
 
 ---
 
-Última actualización: 16 de febrero de 2026
+Última actualización: 12 de marzo de 2026
