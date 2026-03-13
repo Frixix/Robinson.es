@@ -878,6 +878,274 @@ footer .grupo-1 .box figure img {
     font-size: 15px;
 }
 
+
+/* ========================= */
+/* DETALLE DE PROYECTO */
+/* ========================= */
+
+.proyecto-info {
+    padding: 15px;
+}
+
+.tecnologias {
+    margin-top: 10px;
+}
+
+.tecnologias span {
+    display: inline-block;
+    background-color: #1CB698;
+    color: #000;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.proyecto-links {
+    margin-top: 12px;
+}
+
+.proyecto-links a {
+    text-decoration: none;
+    border: 1px solid #1CB698;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-size: 13px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.proyecto-links a:hover {
+    background-color: #1CB698;
+}
+
+/* Características */
+
+.caracteristicas {
+    margin-top: 12px;
+}
+
+.caracteristicas h4 {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #add8e6;
+}
+
+.caracteristicas ul {
+    padding-left: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Modelo de base de datos */
+
+.modelo-db {
+    margin-top: 10px;
+}
+
+.modelo-db h4 {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #add8e6;
+}
+
+.modelo-db pre {
+    background-color: #020020;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    overflow-x: auto;
+}
+
+/* ============================= */
+/* MODAL PROYECTO PORTAFOLIO */
+/* ============================= */
+
+.modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+/* ============================= */
+/* MODAL GALERIA */
+/* ============================= */
+
+.modal-contenido-galeria{
+    background-color:#081b29;
+    padding:30px;
+    border-radius:12px;
+    width:90%;
+    max-width:800px;
+    text-align:center;
+    position:relative;
+}
+
+/* Imagen */
+
+#imagen-galeria{
+    width:100%;
+    max-height:350px;
+    object-fit:contain;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+
+
+
+.btn-prev{
+    left:-50px;
+}
+
+.btn-next{
+    right:-50px;
+}
+
+/* descripcion */
+
+#descripcion-imagen{
+    margin-top:10px;
+    font-size:14px;
+    color:#ccc;
+}
+
+/* boton descripcion proyecto */
+
+.btn-descripcion{
+    margin-top:15px;
+    padding:8px 18px;
+    background:#1CB698;
+    border:none;
+    color:#000;
+    font-weight:bold;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.btn-descripcion:hover{
+    background:#17a589;
+}
+/* ventana del modal */
+
+.modal-contenido{
+    background-color: #081b29;
+    color: #fff;
+    width: 90%;
+    max-width: 700px;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0px 10px 40px rgba(0,0,0,0.6);
+}
+
+/* boton cerrar */
+
+.cerrar{
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cerrar:hover{
+    color: #00aaff;
+}
+
+/* formato del bloque de base de datos */
+
+.modal-contenido pre{
+    background-color: #020d18;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.galeria-proyecto{
+    width:100%;
+    margin:20px 0;
+}
+
+.galeria-proyecto img{
+    width:100%;
+    border-radius:8px;
+}
+
+
+/* zonas estilo tiktok */
+
+.zona{
+    position: absolute;
+    width: 50%;
+    height: 65%;
+    top: 60px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Zona izquierda */
+.zona.izquierda{
+    left: 0;
+}
+
+/* Zona derecha */
+.zona.derecha{
+    right: 0;
+}
+
+/* Flechas */
+
+.zona::before{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: white;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.zona.izquierda::before{
+    content: "❮";
+    left: 20px;
+}
+
+.zona.derecha::before{
+    content: "❯";
+    right: 20px;
+}
+
+.zona:hover::before{
+    opacity: 1;
+}
+
+.zona.izquierda{
+    left:0;
+}
+
+.zona.derecha{
+    right:0;
+}
+.modal-contenido-galeria img{
+    cursor: pointer;
+}
+/* animacion al tocar */
+
+.zona:active{
+    background:rgba(255,255,255,0.05);
+}
+
+
+
+
 /* SECCION RESPONSIVE */
 @media screen and (max-width:980px){
     nav{
@@ -946,4 +1214,12 @@ footer .grupo-1 .box figure img {
     .contacto .fila .col{
         width: 100%;
     }
+}
+.cerrar{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 5;
 }
