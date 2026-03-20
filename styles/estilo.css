@@ -27,6 +27,11 @@ body {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 40px;
+}
+
+section[id] {
+    scroll-margin-top: 40px;
 }
 
 /* Menú */
@@ -278,118 +283,83 @@ html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-bottom: 25px;
 }
-.skills .skill > span{
-    font-weight: bold;
-    display: block;
+.skills .skill-card{
+    background: rgba(2, 0, 32, 0.45);
+    border: 1px solid rgba(173, 216, 230, 0.18);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.skills .skill-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     margin-bottom: 10px;
 }
-.skills .skill .barra-skill{
-    height: 8px;
-    width: 80%;
-    background-color: var(--color-surface-strong);
-    position: relative;
-    margin-bottom: 30px;
-}
-.skills .skill .progreso{
-    background-color: #3a6370;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 8px;
 
-}
-.skills .skill .barra-skill span {
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    background-color: var(--color-accent);
-    border-radius: 50px;
-    line-height: 40px;
-    text-align: center;
-    top: -17px;
-    right: -15px;
-    font-size: 14px;
-}
-/* Estas clases se agregaran dinamicamente mediante javascript */
-.skills .skill .javascript{
-    width: 0%;
-    animation: 2s javascript forwards;
-}
-@keyframes javascript {
-    0%{width: 0%;}
-    100%{width: 40%;}
+.skills .skill-head span:first-child{
+    font-weight: 700;
+    font-size: 18px;
 }
 
-.skills .skill .htmlcss{
-    width: 0%;
-    animation: 2s htmlcss forwards;
-}
-@keyframes htmlcss {
-    0%{width: 0%;}
-    100%{width: 70%;}
-}
-
-.skills .skill .photoshop{
-    width: 0%;
-    animation: 2s photoshop forwards;
-}
-@keyframes photoshop {
-    0%{width: 0%;}
-    100%{width: 70%;}
+.skills .skill-level{
+    background-color: rgba(68, 164, 194, 0.18);
+    color: var(--color-accent-soft);
+    border: 1px solid rgba(173, 216, 230, 0.22);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
-.skills .skill .wordpress{
-    width: 0%;
-    animation: 2s wordpress forwards;
-}
-@keyframes wordpress {
-    0%{width: 0%;}
-    100%{width: 30%;}
+.skills .skill-level.level-strong{
+    background-color: rgba(34, 197, 94, 0.18);
+    color: #86efac;
+    border-color: rgba(134, 239, 172, 0.3);
 }
 
-.skills .skill .drupal{
-    width: 0%;
-    animation: 2s drupal forwards;
-}
-@keyframes drupal {
-    0%{width: 0%;}
-    100%{width: 80%;}
+.skills .skill-level.level-steady{
+    background-color: rgba(132, 204, 22, 0.18);
+    color: #bef264;
+    border-color: rgba(190, 242, 100, 0.3);
 }
 
-.skills .skill .comunicacion{
-    width: 0%;
-    animation: 2s comunicacion forwards;
-}
-@keyframes comunicacion {
-    0%{width: 0%;}
-    100%{width: 80%;}
+.skills .skill-level.level-learning{
+    background-color: rgba(245, 158, 11, 0.18);
+    color: #fcd34d;
+    border-color: rgba(252, 211, 77, 0.3);
 }
 
-.skills .skill .trabajo{
-    width: 0%;
-    animation: 2s trabajo forwards;
-}
-@keyframes trabajo {
-    0%{width: 0%;}
-    100%{width: 75%;}
+.skills .skill-level.level-support{
+    background-color: rgba(249, 115, 22, 0.18);
+    color: #fdba74;
+    border-color: rgba(253, 186, 116, 0.3);
 }
 
-.skills .skill .creatividad{
-    width: 0%;
-    animation: 2s creatividad forwards;
-}
-@keyframes creatividad {
-    0%{width: 0%;}
-    100%{width: 90%;}
+.skills .skill-level.level-low{
+    background-color: rgba(239, 68, 68, 0.18);
+    color: #fca5a5;
+    border-color: rgba(252, 165, 165, 0.3);
 }
 
-.skills .skill .dedicacion{
-    width: 0%;
-    animation: 2s dedicacion forwards;
+.skills .skill-card p{
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: 15px;
 }
-@keyframes dedicacion {
-    0%{width: 0%;}
-    100%{width: 99%;}
+
+.skills .skill-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.skills .skill-tags .tech-pill{
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 
@@ -533,6 +503,22 @@ html {
     font-size: 42px;
     text-align: center;
     margin-bottom: 50px;
+}
+
+.portfolio .section-label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--color-accent-soft);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+}
+
+.portfolio h1 {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* GRID DE PROYECTOS */
@@ -898,17 +884,66 @@ footer .grupo-1 .box figure img {
 
 .tecnologias {
     margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .tecnologias span {
-    display: inline-block;
-    background-color: var(--color-primary);
-    color: #000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+
+.tecnologias span i {
+    font-size: 14px;
+}
+
+.tech-python {
+    background-color: rgba(55, 118, 171, 0.18);
+    color: #ffd43b;
+    border-color: rgba(255, 212, 59, 0.35);
+}
+
+.tech-tkinter {
+    background-color: rgba(32, 201, 151, 0.14);
+    color: #7de2c3;
+    border-color: rgba(125, 226, 195, 0.3);
+}
+
+.tech-sqlite {
+    background-color: rgba(0, 111, 159, 0.18);
+    color: #8fd8ff;
+    border-color: rgba(143, 216, 255, 0.3);
+}
+
+.tech-html {
+    background-color: rgba(227, 79, 38, 0.18);
+    color: #ff9a7a;
+    border-color: rgba(255, 154, 122, 0.3);
+}
+
+.tech-css {
+    background-color: rgba(21, 114, 182, 0.18);
+    color: #7cc7ff;
+    border-color: rgba(124, 199, 255, 0.3);
+}
+
+.tech-javascript {
+    background-color: rgba(247, 223, 30, 0.18);
+    color: #ffe66d;
+    border-color: rgba(255, 230, 109, 0.3);
+}
+
+.tech-photoshop {
+    background-color: rgba(49, 168, 255, 0.18);
+    color: #7fd0ff;
+    border-color: rgba(127, 208, 255, 0.3);
 }
 
 .proyecto-links {
@@ -1193,8 +1228,10 @@ footer .grupo-1 .box figure img {
     .skills .fila .col{
         width: 100%;
     }
-    .skills .fila .col .barra-skill{
-        width: 100%;
+
+    .skills .skill-head{
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .curriculum .fila{
