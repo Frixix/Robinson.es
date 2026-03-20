@@ -2,6 +2,18 @@
 /* Importación de fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital@0;1&display=swap');
 
+:root {
+    --color-bg-dark: #081d30;
+    --color-bg-mid: #0f3454;
+    --color-surface: #252A2E;
+    --color-surface-strong: #020020;
+    --color-primary: #1cb698;
+    --color-accent: #44a4c2;
+    --color-accent-soft: #add8e6;
+    --color-text: #ffffff;
+    --color-text-muted: #ccc;
+}
+
 /* Estilos generales */
 * {
     box-sizing: border-box;
@@ -38,7 +50,7 @@ html {
 .contenedor-header header .logo a{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 36px;
-    color:  #add8e6;
+     color: var(--color-accent-soft);
     text-decoration: none;
 }
 .contenedor-header header ul {
@@ -47,7 +59,7 @@ html {
 }
 
 .contenedor-header header nav ul li a {
-    color: #ffffff;
+     color: var(--color-text);
     margin: 0 15px;
     padding: 3px;
     transition: .5s;
@@ -60,7 +72,7 @@ html {
 
 .nav-responsive {
     background-color: #0b5b67;
-    color: #ffffff;
+     color: var(--color-text);
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -78,7 +90,7 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
-    color:#add8e6;
+    color: var(--color-accent-soft);
     display: flex;
     align-items: center;
 }
@@ -136,8 +148,8 @@ html {
 
 /*sobre mí*/
 .sobremi{
-    background-color: #081d30;
-    color: rgb(255, 255, 255);
+    background-color: var(--color-bg-dark);
+    color: var(--color-text);
     padding: 50px 20px;
 }
 .sobremi .contenido-section{
@@ -151,7 +163,7 @@ html {
     padding: 20px, 0px;
 }
 .sobremi .contenido-section p{
-    font: 18px;
+    font-size: 18px;
     line-height: 22px;
     margin-bottom: 20px;
 }
@@ -174,11 +186,11 @@ html {
 }
 .sobremi .fila .col ul li strong {
     display: inline-block;
-    color: #add8e6;
+    color: var(--color-accent-soft);
     width: 130px;
 }
 .sobremi .fila .col ul li span{
-    background-color: #add8e6;
+    background-color: var(--color-accent-soft);
     padding: 3px;
     font-weight: bold;
     border-radius: 5px;
@@ -200,51 +212,48 @@ html {
     transition: .3s;
 }
 .sobremi .fila .contenedor-intereses .interes:hover{
-    background-color: #44a4c2 ;
+    background-color: var(--color-accent);
 }
 .sobremi .fila .contenedor-intereses .interes i{
     font-size: 30px;
     margin-bottom: 10px;
 }
-.sobremi button{
+.sobremi .btn-cv{
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #ffff;
+    border: 2px solid var(--color-text);
     width: fit-content;
     display: block;
     margin: 20px auto;
     padding: 10px 22px;
     font-size: 16px;
-    color: #ffffff;
+    color: var(--color-text);
     position: relative;
     z-index: 10;
     text-decoration: none;
     outline: none;
+    overflow: hidden;
 }
-.sobremi button a {
-    text-decoration: none; 
-    color: inherit; 
-}
-.sobremi button .overlay{
+.sobremi .btn-cv .overlay{
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 100%;
-    background-color: #44a4c2;
+    background-color: var(--color-accent);
     z-index: -1;
     transition: 1s;
     
 }
-.sobremi button:hover .overlay{
+.sobremi .btn-cv:hover .overlay{
     width: 100%;
     
 }
 
 /* Seccion Skills*/
 .skills{
-    background-color: #0f3454;
-    color: #ffffff;
+    background-color: var(--color-bg-mid);
+    color: var(--color-text);
     padding: 50px 20px;
 }
 .skills .contenido-section{
@@ -277,7 +286,7 @@ html {
 .skills .skill .barra-skill{
     height: 8px;
     width: 80%;
-    background-color: #020020;
+    background-color: var(--color-surface-strong);
     position: relative;
     margin-bottom: 30px;
 }
@@ -293,13 +302,13 @@ html {
     position: absolute;
     height: 40px;
     width: 40px;
-    background-color: #44a4c2;
+    background-color: var(--color-accent);
     border-radius: 50px;
     line-height: 40px;
     text-align: center;
     top: -17px;
     right: -15px;
-    font-size: 14px;
+    font-size: 14px;
 }
 /* Estas clases se agregaran dinamicamente mediante javascript */
 .skills .skill .javascript{
@@ -457,18 +466,18 @@ html {
 }
 
 .curriculum .fila .izq {
-    border-right: 2px solid #1cb698;
+    border-right: 2px solid var(--color-primary);
     margin-right: 20px;
 }
 
 .curriculum .fila .der {
-    border-left: 2px solid #1cb698;
+    border-left: 2px solid var(--color-primary);
     margin-left: 20px;
 }
 
 .curriculum .fila .item .conectori {
     height: 2px;
-    background-color: #1cb698;
+    background-color: var(--color-primary);
     width: 47px;
     position: absolute;
     top: 50%;
@@ -480,7 +489,7 @@ html {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background-color: #1cb698;
+    background-color: var(--color-primary);
     float: right;
     position: relative;
     bottom: 4px;
@@ -510,8 +519,8 @@ html {
 /* ========================= */
 
 .portfolio {
-    background-color: #0f3454;
-    color: #ffffff;
+    background-color: var(--color-bg-mid);
+    color: var(--color-text);
     padding: 70px 20px;
 }
 
@@ -596,7 +605,7 @@ html {
 
 .portfolio .overlay p {
     font-size: 14px;
-    color: #ccc;
+    color: var(--color-text-muted);
     line-height: 1.4;
 }
 
@@ -607,8 +616,8 @@ html {
     align-self: flex-start;
 
     text-decoration: none;
-    color: #fff;
-    border: 1px solid #1CB698;
+    color: var(--color-text);
+    border: 1px solid var(--color-primary);
     padding: 6px 14px;
     font-size: 13px;
     border-radius: 4px;
@@ -617,7 +626,7 @@ html {
 }
 
 .portfolio .overlay a:hover {
-    background-color: #1CB698;
+    background-color: var(--color-primary);
 }
 .contacto {
     background: linear-gradient(to top, rgba(30, 35, 38, 0.85), rgba(30, 35, 38, 0.95)),
@@ -625,7 +634,7 @@ html {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
-    color: #ffffff;
+    color: var(--color-text);
     padding: 70px 20px;
 }
 
@@ -643,7 +652,7 @@ html {
 .contacto h3 {
     font-size: 28px;
     margin-bottom: 25px;
-    color: #add8e6;
+    color: var(--color-accent-soft);
 }
 
 /* ===== Layout ===== */
@@ -682,7 +691,7 @@ html {
 .contacto .col input:focus,
 .contacto .col textarea:focus {
     background-color: rgba(31, 90, 122, 0.9);
-    border-color: #1CB698;
+    border-color: var(--color-primary);
     outline: none;
 }
 
@@ -707,7 +716,7 @@ html {
 .contacto button .overlay {
     position: absolute;
     inset: 0;
-    background-color: #1CB698;
+    background-color: var(--color-primary);
     z-index: -1;
     transform: scaleX(0);
     transform-origin: left;
@@ -734,7 +743,7 @@ html {
 }
 
 .contacto .col ul li strong {
-    color: #add8e6;
+    color: var(--color-accent-soft);
 }
 .contacto .redes a {
     color: #fff;
@@ -764,8 +773,8 @@ html {
 /*PIE DE PAGINA*/ 
 
 footer{
-    background-color: #252A2E;
-    color: #fff;
+    background-color: var(--color-surface);
+    color: var(--color-text);
     padding: 50px 0 30px 0;
     text-align: center;
     position: relative;
@@ -797,8 +806,8 @@ footer .arriba {
     display: block;
     width: 50px;
     height: 50px;
-    background-color: #1CB698;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-text);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -893,7 +902,7 @@ footer .grupo-1 .box figure img {
 
 .tecnologias span {
     display: inline-block;
-    background-color: #1CB698;
+    background-color: var(--color-primary);
     color: #000;
     font-size: 12px;
     padding: 4px 10px;
@@ -908,7 +917,7 @@ footer .grupo-1 .box figure img {
 
 .proyecto-links a {
     text-decoration: none;
-    border: 1px solid #1CB698;
+    border: 1px solid var(--color-primary);
     padding: 6px 12px;
     border-radius: 4px;
     margin-right: 8px;
@@ -918,7 +927,7 @@ footer .grupo-1 .box figure img {
 }
 
 .proyecto-links a:hover {
-    background-color: #1CB698;
+    background-color: var(--color-primary);
 }
 
 /* Características */
@@ -930,7 +939,7 @@ footer .grupo-1 .box figure img {
 .caracteristicas h4 {
     font-size: 14px;
     margin-bottom: 6px;
-    color: #add8e6;
+    color: var(--color-accent-soft);
 }
 
 .caracteristicas ul {
@@ -1020,7 +1029,7 @@ footer .grupo-1 .box figure img {
 .btn-descripcion{
     margin-top:15px;
     padding:8px 18px;
-    background:#1CB698;
+    background: var(--color-primary);
     border:none;
     color:#000;
     font-weight:bold;
@@ -1175,7 +1184,7 @@ footer .grupo-1 .box figure img {
         display: block;
     }
     .sobremi .fila .col{
-        width: fit-content;
+        width: 100%;
     }
 
     .skills .fila{
@@ -1214,12 +1223,4 @@ footer .grupo-1 .box figure img {
     .contacto .fila .col{
         width: 100%;
     }
-}
-.cerrar{
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 5;
 }
