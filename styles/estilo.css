@@ -375,6 +375,50 @@ section[id] {
     margin: auto;
 }
 
+.curriculum .curriculum-intro {
+    max-width: 820px;
+    margin: 0 auto 18px;
+    text-align: center;
+    color: #d6e4ee;
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.curriculum .curriculum-highlight {
+    max-width: 920px;
+    margin: 0 auto 42px;
+    padding: 18px 22px;
+    border-radius: 22px;
+    border: 1px solid rgba(68, 164, 194, 0.22);
+    background: linear-gradient(180deg, rgba(15, 52, 84, 0.82), rgba(8, 29, 48, 0.96));
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.curriculum .highlight-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 8px 14px;
+    background-color: rgba(28, 182, 152, 0.18);
+    color: #8ff3dd;
+    border: 1px solid rgba(143, 243, 221, 0.28);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.curriculum .curriculum-highlight p {
+    margin: 0;
+    color: #eff7fb;
+    line-height: 1.7;
+}
+
 .curriculum h2 {
     font-size: 48px;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -395,7 +439,14 @@ section[id] {
 .curriculum .fila .col h3 {
     font-size: 28px;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+}
+
+.curriculum .columna-intro {
+    color: #b8cfde;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    max-width: 440px;
 }
 
 .curriculum .fila .izquierda {
@@ -407,32 +458,108 @@ section[id] {
 }
 
 .curriculum .fila .item {
-    padding: 25px;
+    padding: 24px;
     margin-bottom: 30px;
-    background-color: rgba(0, 198, 220, 0.24);
+    background: linear-gradient(180deg, rgba(10, 39, 61, 0.96), rgba(6, 23, 36, 0.98));
+    border: 1px solid rgba(68, 164, 194, 0.18);
+    border-radius: 20px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
     position: relative;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.curriculum .fila .item:hover {
+    transform: translateY(-6px);
+    border-color: rgba(143, 216, 255, 0.34);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.24);
+}
+
+.curriculum .fila .item.item-actual {
+    border-color: rgba(28, 182, 152, 0.34);
+    box-shadow: 0 18px 40px rgba(7, 27, 41, 0.28);
+}
+
+.curriculum .item-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.curriculum .item-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(180deg, rgba(68, 164, 194, 0.22), rgba(28, 182, 152, 0.18));
+    color: var(--color-accent-soft);
+    border: 1px solid rgba(173, 216, 230, 0.18);
+    font-size: 20px;
+}
+
+.curriculum .item-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.curriculum .item-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.curriculum .item-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(173, 216, 230, 0.22);
+    background-color: rgba(68, 164, 194, 0.16);
+    color: #cdefff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.curriculum .item-badge.badge-current {
+    background-color: rgba(28, 182, 152, 0.18);
+    border-color: rgba(143, 243, 221, 0.3);
+    color: #8ff3dd;
+}
+
+.curriculum .item-badge.badge-highlight {
+    background-color: rgba(255, 197, 61, 0.15);
+    border-color: rgba(255, 223, 128, 0.24);
+    color: #ffe39b;
 }
 
 .curriculum .fila .item h4 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    font-size: 22px;
+    margin-bottom: 6px;
 }
 
 .curriculum .fila .item .casa {
     color: #44a4c2;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 700;
     display: block;
 }
 
 .curriculum .fila .item .fecha {
     display: block;
     color: #8fcddf;
-    margin-bottom: 10px;
+    font-weight: 600;
 }
 
 .curriculum .fila .item p {
-    line-height: 24px;
+    line-height: 1.75;
+    color: #d8e8f2;
 }
 
 .curriculum .fila .izq {
@@ -448,41 +575,60 @@ section[id] {
 .curriculum .fila .item .conectori {
     height: 2px;
     background-color: var(--color-primary);
-    width: 47px;
+    width: 32px;
     position: absolute;
     top: 50%;
-    right: -47px;
+    right: -32px;
     z-index: 5;
 }
 .curriculum .fila .item .conectori .circuloi{
     display: block;
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
     background-color: var(--color-primary);
     float: right;
     position: relative;
-    bottom: 4px;
+    bottom: 5px;
 
 }
 .curriculum .fila .item .conectord {
     height: 2px;
     background-color: #1cb698;
-    width: 47px;
+    width: 32px;
     position: absolute;
     top: 50%;
-    left: -47px;
+    left: -32px;
     z-index: 5;
 }
 .curriculum .fila .item .conectord .circulod{
     display: block;
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
     background-color: #1cb698;
     float: left;
     position: relative;
-    bottom: 4px;
+    bottom: 5px;
+}
+
+.curriculum .item-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.curriculum .item-badges span {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #d8e8f2;
+    font-size: 12px;
+    font-weight: 600;
 }
 /* ========================= */
 /* SECCION PORTFOLIO */
@@ -1412,6 +1558,42 @@ footer .grupo-1 .box figure img {
         margin-bottom: 22px;
     }
 
+    .curriculum .curriculum-intro{
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .curriculum .curriculum-highlight{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+        margin-bottom: 32px;
+    }
+
+    .curriculum .columna-intro{
+        max-width: none;
+        margin-bottom: 20px;
+    }
+
+    .curriculum .item-header{
+        gap: 14px;
+    }
+
+    .curriculum .item-icon{
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        font-size: 18px;
+    }
+
+    .curriculum .item-meta{
+        gap: 8px;
+    }
+
+    .curriculum .fila .item h4{
+        font-size: 20px;
+    }
+
     .curriculum .fila .item .conectori,
     .curriculum .fila .item .conectord{
         display: none;
@@ -1537,6 +1719,42 @@ footer .grupo-1 .box figure img {
 
     .contacto .col{
         min-width: 0;
+    }
+
+    .curriculum .curriculum-highlight{
+        border-radius: 18px;
+        padding: 16px;
+    }
+
+    .curriculum .highlight-badge{
+        font-size: 11px;
+    }
+
+    .curriculum .item-header{
+        flex-direction: column;
+    }
+
+    .curriculum .item-icon{
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+    }
+
+    .curriculum .fila .item h4{
+        font-size: 19px;
+    }
+
+    .curriculum .fila .item .casa{
+        font-size: 15px;
+    }
+
+    .curriculum .item-badges{
+        gap: 8px;
+    }
+
+    .curriculum .item-badges span{
+        font-size: 11px;
+        padding: 6px 10px;
     }
 
     .pie-pagina .grupo-1 {
