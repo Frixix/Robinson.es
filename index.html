@@ -464,23 +464,21 @@
 
                 <!-- Proyecto 1 -->
                 <div class="proyecto">
-
                     <div class="proyecto-img">
                         <img 
-                        src="img/proyectos/inventario_2.0/inventario_inicio.jpg"
-                        alt="Sistema de inventario desarrollado en Python"
-                        onclick="abrirGaleria()"
-                        style="cursor:pointer;"
+                            src="img/proyectos/inventario_2.0/inventario_inicio.jpg"
+                            alt="Sistema de inventario desarrollado en Python"
+                            onclick="abrirGaleria('inventario')"
+                            style="cursor:pointer;"
                         >
                     </div>
 
                     <div class="proyecto-info">
-
                         <h3>Inventario 2.0</h3>
 
                         <p>
-                        Sistema de gestión de inventario desarrollado en Python
-                        con interfaz Tkinter y base de datos SQLite.
+                            Sistema de gestión de inventario desarrollado en Python
+                            con interfaz Tkinter y base de datos SQLite.
                         </p>
 
                         <div class="tecnologias">
@@ -491,25 +489,23 @@
 
                         <div class="proyecto-links">
                             <a href="https://github.com/Frixix/Inventario-2.0#" target="_blank">Código</a>
-                            <a href="javascript:void(0)" onclick="abrirModal()">Ver detalles</a>
+                            <a href="javascript:void(0)" onclick="abrirModal('inventario')">Ver detalles</a>
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- Proyecto 2 -->
                 <div class="proyecto">
-
                     <div class="proyecto-img">
-                        <img src="./img/proyectos/Notestack/pantalla_principal.jpg" alt="Convertidor"
-                        alt="Cuaderno virtual desarrollado con javascript, html y css"
-                        onclick="abrirGaleria()"
-                        style="cursor:pointer;">
+                        <img 
+                            src="./img/proyectos/Notestack/pantalla_principal.jpg"
+                            alt="Cuaderno virtual desarrollado con JavaScript, HTML y CSS"
+                            onclick="abrirGaleria('notestack')"
+                            style="cursor:pointer;"
+                        >
                     </div>
 
                     <div class="proyecto-info">
-
                         <h3>NoteStack</h3>
 
                         <p>
@@ -519,7 +515,7 @@
                             búsqueda y guardado automático en LocalStorage; 
                             su arquitectura sigue un patrón modular 
                             (UI → Controller → Services → Storage), 
-                            lo que la hace ligera, escalable.
+                            lo que la hace ligera y escalable.
                         </p>
 
                         <div class="tecnologias">
@@ -531,22 +527,18 @@
                         <div class="proyecto-links">
                             <a href="https://github.com/Frixix/NoteStack" target="_blank">Código</a>
                             <a href="https://frixix.github.io/NoteStack/" target="_blank">Demo</a>
-                            <a href="javascript:void(0)" onclick="abrirModal()">Ver detalles</a>
+                            <a href="javascript:void(0)" onclick="abrirModal('notestack')">Ver detalles</a>
                         </div>
-
                     </div>
-
                 </div>
 
                 <!-- Proyecto 3 -->
                 <div class="proyecto">
-
                     <div class="proyecto-img">
                         <img src="./Imagenes/sudoku.jpg" alt="Sudoku">
                     </div>
 
                     <div class="proyecto-info">
-
                         <h3>Sudoku</h3>
 
                         <p>
@@ -562,9 +554,7 @@
                             <a href="#">Código</a>
                             <a href="#">Demo</a>
                         </div>
-
                     </div>
-
                 </div>
 
             </div>
@@ -676,79 +666,107 @@
             <small>&copy; 2026 <b>Robinson Rodriguez</b> - Todos los derechos reservados.</small>
         </div>
     </footer>
-        <div id="modal-inventario" class="modal">
+    <div id="modal-inventario" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('inventario')">×</span>
 
-            <div class="modal-contenido">
+            <h2>Inventario 2.0</h2>
 
-                <span class="cerrar" onclick="cerrarModal()">×</span>
-
-                <h2>Inventario 2.0</h2>
-
-                <p>
+            <p>
                 Sistema de gestión de inventario desarrollado en Python
                 con interfaz Tkinter y base de datos SQLite.
-                </p>
+            </p>
 
-                <h3>Características</h3>
-                <ul>
-                    <li>Registro de productos</li>
-                    <li>Control de stock</li>
-                    <li>Movimientos de entrada y salida</li>
-                    <li>Historial de inventario</li>
-                </ul>
+            <h3>Características</h3>
+            <ul>
+                <li>Registro de productos</li>
+                <li>Control de stock</li>
+                <li>Movimientos de entrada y salida</li>
+                <li>Historial de inventario</li>
+            </ul>
 
-                <h3>Modelo de base de datos</h3>
+            <h3>Modelo de base de datos</h3>
 
-        <pre>
-        PRODUCTOS
-        ---------
-        id (PK)
-        codigo
-        nombre
-        precio_venta
-        stock_actual
-        stock_minimo
+            <pre>
+                PRODUCTOS
+                ---------
+                id (PK)
+                codigo
+                nombre
+                precio_venta
+                stock_actual
+                stock_minimo
 
-        MOVIMIENTOS
-        -----------
-        producto_id (FK)
-        cliente_id (FK)
-        tipo_movimiento
-        cantidad
-        fecha
-        </pre>
+                MOVIMIENTOS
+                -----------
+                producto_id (FK)
+                cliente_id (FK)
+                tipo_movimiento
+                cantidad
+                fecha
+            </pre>
+        </div>
+    </div>
+    <!-- MODAL NoteStack -->
+    <div id="modal-notestack" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('notestack')">×</span>
 
-            </div>
+            <h2>NoteStack</h2>
+
+            <p>
+                Aplicación web SPA desarrollada con HTML, CSS y JavaScript puro
+                para organizar información mediante cuadernos y notas.
+            </p>
+
+            <h3>Características</h3>
+            <ul>
+                <li>Creación y edición de cuadernos</li>
+                <li>Creación, búsqueda y eliminación de notas</li>
+                <li>Guardado automático en LocalStorage</li>
+                <li>Arquitectura modular y ligera</li>
+            </ul>
+
+            <h3>Estructura del proyecto</h3>
+
+            <pre>
+            UI
+            │
+            ├── Controller
+            │
+            ├── Services
+            │
+            └── Storage (LocalStorage)
+            </pre>
+        </div>
+    </div>
+    <!-- MODAL GALERÍA DE IMÁGENES -->
+
+    <div id="modal-galeria" class="modal">
+
+        <div class="modal-contenido-galeria">
+
+            <span class="cerrar" onclick="cerrarGaleria()">×</span>
+
+            <!-- Zonas clic tipo TikTok -->
+            <div class="zona izquierda" onclick="imagenAnterior()"></div>
+            <div class="zona derecha" onclick="imagenSiguiente()"></div>
+
+            <!-- Imagen -->
+            <img id="imagen-galeria" src="" alt="Imagen del proyecto">
+
+            <!-- Descripción -->
+            <p id="descripcion-imagen"></p>
+
+            <!-- Botón para ir a la descripción -->
+            <button onclick="abrirDescripcion()" class="btn-descripcion">
+                Ver descripción del proyecto
+            </button>
 
         </div>
 
-        <!-- MODAL GALERÍA DE IMÁGENES -->
-
-        <div id="modal-galeria" class="modal">
-
-            <div class="modal-contenido-galeria">
-
-                <span class="cerrar" onclick="cerrarGaleria()">×</span>
-
-                <!-- Zonas clic tipo TikTok -->
-                <div class="zona izquierda" onclick="imagenAnterior()"></div>
-                <div class="zona derecha" onclick="imagenSiguiente()"></div>
-
-                <!-- Imagen -->
-                <img id="imagen-galeria" src="" alt="Imagen del proyecto">
-
-                <!-- Descripción -->
-                <p id="descripcion-imagen"></p>
-
-                <!-- Botón para ir a la descripción -->
-                <button onclick="abrirDescripcion()" class="btn-descripcion">
-                    Ver descripción del proyecto
-                </button>
-
-            </div>
-
-        </div>
-    <script src="./doc_js/script.js"></script>
+    </div>
+<script src="./doc_js/script.js"></script>
 </body>
 
 </html>
