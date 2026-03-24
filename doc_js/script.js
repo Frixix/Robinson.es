@@ -47,14 +47,15 @@ const proyectos = {
         imagenes: [
             "img/proyectos/Notestack/pantalla_principal.jpg",
             "img/proyectos/Notestack/cuaderno.jpg",
-            "img/proyectos/Notestack/cuerpo_Cuaderno.jpg", //img dando problema 
             "img/proyectos/Notestack/notas.jpg",
+            "img/proyectos/Notestack/cuerpo_Cuaderno.jpg", //img dando problema 
+        
         ],
         descripciones: [
             "Pantalla principal de NoteStack.",
             "Vista de organización de cuadernos.",
-            "Gestión y edición de notas dentro de la aplicación.",
             "Sistema de búsqueda de notas y contenido."
+            "Gestión y edición de notas dentro de la aplicación.",
         ]
     }
 };
