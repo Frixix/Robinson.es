@@ -1,19 +1,13 @@
-let menuVisible = false;
-
 // =============================
 // MENU RESPONSIVE
 // =============================
 
+let menuVisible = false;
+
 function mostrarOcultarMenu() {
     const nav = document.getElementById("nav");
-
-    if (menuVisible) {
-        nav.classList.remove("responsive");
-        menuVisible = false;
-    } else {
-        nav.classList.add("responsive");
-        menuVisible = true;
-    }
+    menuVisible = !menuVisible;
+    nav.classList.toggle("responsive", menuVisible);
 }
 
 function seleccionar() {
@@ -41,7 +35,6 @@ const proyectos = {
             "Historial de operaciones del sistema."
         ]
     },
-
     notestack: {
         modalId: "modal-notestack",
         imagenes: [
@@ -60,115 +53,96 @@ const proyectos = {
 };
 
 // =============================
-// VARIABLES DE CONTROL
+// ESTADO DE GALERÍA
 // =============================
 
-let proyectoActual = "";
-let indiceImagen = 0;
+const estado = {
+    proyectoActual: "",
+    indiceImagen: 0
+};
 
 // =============================
-// MODAL DESCRIPCION PROYECTO
+// HELPERS
+// =============================
+
+function getProyecto(nombre) {
+    return proyectos[nombre] ?? null;
+}
+
+function getModal(id) {
+    return document.getElementById(id);
+}
+
+// =============================
+// MODALES DE PROYECTO
 // =============================
 
 function abrirModal(nombreProyecto) {
-    cerrarTodosLosModales();
-
-    const proyecto = proyectos[nombreProyecto];
+    const proyecto = getProyecto(nombreProyecto);
     if (!proyecto) return;
 
-    proyectoActual = nombreProyecto;
-    document.getElementById(proyecto.modalId).style.display = "flex";
+    cerrarTodosLosModales();
+    estado.proyectoActual = nombreProyecto;
+    getModal(proyecto.modalId).style.display = "flex";
 }
 
 function cerrarModal(nombreProyecto) {
-    const proyecto = proyectos[nombreProyecto];
+    const proyecto = getProyecto(nombreProyecto);
     if (!proyecto) return;
 
-    document.getElementById(proyecto.modalId).style.display = "none";
+    getModal(proyecto.modalId).style.display = "none";
 }
 
 function cerrarTodosLosModales() {
-    for (const key in proyectos) {
-        const modal = document.getElementById(proyectos[key].modalId);
-        if (modal) {
-            modal.style.display = "none";
-        }
-    }
+    Object.values(proyectos).forEach(({ modalId }) => {
+        const modal = getModal(modalId);
+        if (modal) modal.style.display = "none";
+    });
 }
 
 // =============================
-// MODAL GALERIA
+// GALERÍA
 // =============================
 
 function abrirGaleria(nombreProyecto) {
-    const proyecto = proyectos[nombreProyecto];
+    const proyecto = getProyecto(nombreProyecto);
     if (!proyecto) return;
 
-    proyectoActual = nombreProyecto;
-    indiceImagen = 0;
+    estado.proyectoActual = nombreProyecto;
+    estado.indiceImagen = 0;
 
-    document.getElementById("modal-galeria").style.display = "flex";
+    getModal("modal-galeria").style.display = "flex";
     actualizarGaleria();
 }
 
 function cerrarGaleria() {
-    document.getElementById("modal-galeria").style.display = "none";
+    getModal("modal-galeria").style.display = "none";
 }
 
 function abrirDescripcion() {
     cerrarGaleria();
-
-    const proyecto = proyectos[proyectoActual];
+    const proyecto = getProyecto(estado.proyectoActual);
     if (!proyecto) return;
 
-    document.getElementById(proyecto.modalId).style.display = "flex";
+    getModal(proyecto.modalId).style.display = "flex";
 }
-
-// =============================
-// ACTUALIZAR IMAGEN
-// =============================
 
 function actualizarGaleria() {
-    const proyecto = proyectos[proyectoActual];
+    const proyecto = getProyecto(estado.proyectoActual);
     if (!proyecto) return;
 
-    let imagen = document.getElementById("imagen-galeria");
-    let descripcion = document.getElementById("descripcion-imagen");
-
-    imagen.src = proyecto.imagenes[indiceImagen];
-    descripcion.textContent = proyecto.descripciones[indiceImagen];
+    getModal("imagen-galeria").src = proyecto.imagenes[estado.indiceImagen];
+    getModal("descripcion-imagen").textContent = proyecto.descripciones[estado.indiceImagen];
 }
 
-// =============================
-// IMAGEN SIGUIENTE
-// =============================
-
-function imagenSiguiente() {
-    const proyecto = proyectos[proyectoActual];
+function cambiarImagen(direccion) {
+    const proyecto = getProyecto(estado.proyectoActual);
     if (!proyecto) return;
 
-    indiceImagen++;
-
-    if (indiceImagen >= proyecto.imagenes.length) {
-        indiceImagen = 0;
-    }
-
+    const total = proyecto.imagenes.length;
+    estado.indiceImagen = (estado.indiceImagen + direccion + total) % total;
     actualizarGaleria();
 }
 
-// =============================
-// IMAGEN ANTERIOR
-// =============================
-
-function imagenAnterior() {
-    const proyecto = proyectos[proyectoActual];
-    if (!proyecto) return;
-
-    indiceImagen--;
-
-    if (indiceImagen < 0) {
-        indiceImagen = proyecto.imagenes.length - 1;
-    }
-
-    actualizarGaleria();
-}
+function imagenSiguiente() { cambiarImagen(1);  }
+function imagenAnterior()  { cambiarImagen(-1); }
