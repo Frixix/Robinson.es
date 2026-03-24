@@ -48,7 +48,7 @@ const proyectos = {
             "img/proyectos/Notestack/pantalla_principal.jpg",
             "img/proyectos/Notestack/cuaderno.jpg",
             "img/proyectos/Notestack/notas.jpg",
-            "img/proyectos/Notestack/cuerpo_Cuaderno.jpg" //img dando problema 
+            "img/proyectos/Notestack/cuerpo_cuaderno.jpg"
         ],
         descripciones: [
             "Pantalla principal de NoteStack.",
