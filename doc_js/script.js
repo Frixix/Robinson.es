@@ -28,10 +28,10 @@ const proyectos = {
     inventario: {
         modalId: "modal-inventario",
         imagenes: [
-            "img/proyectos/inventario_2.0/inventario_inicio.jpg",
-            "img/proyectos/inventario_2.0/entrada_inventario.jpg",
-            "img/proyectos/inventario_2.0/salida_inventario.jpg",
-            "img/proyectos/inventario_2.0/historial_salidas.jpg"
+            "img/proyectos/Inventario_2.0/inventario_inicio.jpg",
+            "img/proyectos/Inventario_2.0/entrada_inventario.jpg",
+            "img/proyectos/Inventario_2.0/salida_inventario.jpg",
+            "img/proyectos/Inventario_2.0/historial_salidas.jpg"
         ],
         descripciones: [
             "Pantalla principal del sistema de inventario.",
@@ -57,17 +57,14 @@ const proyectos = {
         ]
     },
 
-    // 💰 SOLVEN (finanzas personales, ya coherente)
+    // ✅ DESPUÉS (mayúscula - coincide con la carpeta real)
     solven: {
         modalId: "modal-solven",
         imagenes: [
-            "img/proyectos/solven/pantalla-principal.jpg",
-            "img/proyectos/solven/area-de-transacción.jpg",
-            "img/proyectos/solven/filtro-categoria.jpg",
-            "img/proyectos/solven/historial-transacciones.jpg"
-            
-            
-            
+            "img/proyectos/Solven/solven_inicio.jpg",
+            "img/proyectos/Solven/solven_dashboard.jpg",
+            "img/proyectos/Solven/solven_transacciones.jpg",
+            "img/proyectos/Solven/solven_resumen.jpg"
         ],
         descripciones: [
             "Dashboard principal con resumen financiero.",
