@@ -57,22 +57,21 @@ const proyectos = {
         ]
     },
 
-    // ✅ DESPUÉS (mayúscula - coincide con la carpeta real)
-    solven: {
-        modalId: "modal-solven",
-        imagenes: [
-            "img/proyectos/Solven/solven_inicio.jpg",
-            "img/proyectos/Solven/solven_dashboard.jpg",
-            "img/proyectos/Solven/solven_transacciones.jpg",
-            "img/proyectos/Solven/solven_resumen.jpg"
-        ],
-        descripciones: [
-            "Dashboard principal con resumen financiero.",
-            "Visualización del balance general.",
-            "Registro y gestión de ingresos y gastos.",
-            "Resumen de movimientos y estado financiero."
-        ]
-    }
+        solven: {
+            modalId: "modal-solven",
+            imagenes: [
+                "img/proyectos/Solven/solven.jpg",
+                "img/proyectos/Solven/pantalla-principal.jpg",
+                "img/proyectos/Solven/area-de-transacción.jpg",
+                "img/proyectos/Solven/filtro-categoria.jpg"
+            ],
+            descripciones: [
+                "Vista general de Solven, app de finanzas personales.",
+                "Pantalla principal con resumen de ingresos, gastos y balance.",
+                "Área de registro y gestión de transacciones.",
+                "Filtros por categoría y tipo de movimiento."
+            ]
+        }
 };
 
 // =============================
