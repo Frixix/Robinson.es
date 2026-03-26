@@ -691,6 +691,90 @@ section[id] {
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
+/* ========================= */
+/* BOTÓN PORTFOLIO IGUAL AL CV */
+/* ========================= */
+
+.portfolio .btn-cv{
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid var(--color-text);
+    width: fit-content;
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 22px;
+    font-size: 16px;
+    color: var(--color-text);
+    position: relative;
+    z-index: 10;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+/* overlay igual */
+.portfolio .btn-cv .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--color-accent);
+    z-index: -1;
+    transition: 1s;
+}
+
+/* hover igual */
+.portfolio .btn-cv:hover .overlay{
+    width: 100%;
+}
+
+.proyectos-cta {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.portfolio .btn-cv {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 28px;
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+/* ICONO */
+.portfolio .btn-cv i {
+    transition: transform 0.3s ease;
+}
+
+/* OVERLAY */
+.portfolio .btn-cv .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        rgba(28, 182, 152, 0.9),
+        rgba(68, 164, 194, 0.9)
+    );
+
+    z-index: -1;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
 /* IMAGEN */
 
 .portfolio .proyecto img {
