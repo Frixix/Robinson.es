@@ -203,7 +203,6 @@
                         </div>
                         <p>Me interesa seguir mejorando, aprender nuevas herramientas y reconocer con honestidad lo que todavía me falta por dominar.</p>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -456,7 +455,7 @@
         </div>
     </section>
 
-    <!-- Section porfolio -->
+    <!-- Section portfolio -->
     <section id="portfolio" class="portfolio">
         <div class="contenido-section">
             <h1>Proyectos</h1>
@@ -533,19 +532,14 @@
                 </div>
 
                 <!-- Proyecto 3 -->
-                    <div class="proyecto">
-                        <div class="proyecto-img">
-                            <img 
-                                src="./img/proyectos/Solven/solven.jpg"
-                                alt="Solven - App de finanzas personales"
-                                onclick="abrirGaleria('solven')"
-                                style="cursor:pointer;"
-                            >
-                        </div>
-
-                        <div class="proyecto-info">
-                            ...
-                        </div>
+                <div class="proyecto">
+                    <div class="proyecto-img">
+                        <img 
+                            src="./img/proyectos/Solven/solven.jpg"
+                            alt="Solven - App de finanzas personales"
+                            onclick="abrirGaleria('solven')"
+                            style="cursor:pointer;"
+                        >
                     </div>
 
                     <div class="proyecto-info">
@@ -564,7 +558,7 @@
                         </div>
 
                         <div class="proyecto-links">
-                            <a href="https://github.com/Frixix/NoteStack" target="_blank">Código</a>
+                            <a href="https://github.com/Frixix/Solven" target="_blank">Código</a>
                             <a href="https://frixix.github.io/Solven/" target="_blank">Demo</a>
                             <a href="javascript:void(0)" onclick="abrirModal('solven')">Ver detalles</a>
                         </div>
@@ -574,6 +568,7 @@
             </div>
         </div>
     </section>
+
     <!-- SECCIÓN CONTACTO -->
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
@@ -628,10 +623,10 @@
                             <a href="https://wa.me/573104932777" target="_blank"><i
                                     class="fa-brands fa-whatsapp"></i></a>
                         </div>
-
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- footer -->
@@ -680,6 +675,8 @@
             <small>&copy; 2026 <b>Robinson Rodriguez</b> - Todos los derechos reservados.</small>
         </div>
     </footer>
+
+    <!-- MODAL Inventario -->
     <div id="modal-inventario" class="modal">
         <div class="modal-contenido">
             <span class="cerrar" onclick="cerrarModal('inventario')">×</span>
@@ -702,25 +699,26 @@
             <h3>Modelo de base de datos</h3>
 
             <pre>
-                PRODUCTOS
-                ---------
-                id (PK)
-                codigo
-                nombre
-                precio_venta
-                stock_actual
-                stock_minimo
+PRODUCTOS
+---------
+id (PK)
+codigo
+nombre
+precio_venta
+stock_actual
+stock_minimo
 
-                MOVIMIENTOS
-                -----------
-                producto_id (FK)
-                cliente_id (FK)
-                tipo_movimiento
-                cantidad
-                fecha
+MOVIMIENTOS
+-----------
+producto_id (FK)
+cliente_id (FK)
+tipo_movimiento
+cantidad
+fecha
             </pre>
         </div>
     </div>
+
     <!-- MODAL NoteStack -->
     <div id="modal-notestack" class="modal">
         <div class="modal-contenido">
@@ -744,61 +742,61 @@
             <h3>Estructura del proyecto</h3>
 
             <pre>
-            UI
-            │
-            ├── Controller
-            │
-            ├── Services
-            │
-            └── Storage (LocalStorage)
+UI
+│
+├── Controller
+│
+├── Services
+│
+└── Storage (LocalStorage)
             </pre>
         </div>
     </div>
 
-        <!-- MODAL Solven -->
-        <div id="modal-solven" class="modal">
-            <div class="modal-contenido">
-                <span class="cerrar" onclick="cerrarModal('solven')">×</span>
+    <!-- MODAL Solven -->
+    <div id="modal-solven" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('solven')">×</span>
 
-                <h2>Solven</h2>
+            <h2>Solven</h2>
 
-                <p>
-                    Aplicación web personal para llevar el control de ingresos, gastos,
-                    balance, categorías y resúmenes financieros. Desarrollada por fases
-                    como parte de mi aprendizaje en desarrollo web.
-                </p>
+            <p>
+                Aplicación web personal para llevar el control de ingresos, gastos,
+                balance, categorías y resúmenes financieros. Desarrollada por fases
+                como parte de mi aprendizaje en desarrollo web.
+            </p>
 
-                <h3>Funcionalidades actuales (MVP)</h3>
-                <ul>
-                    <li>Registro de ingresos y gastos con categorías dinámicas</li>
-                    <li>Eliminación y edición de transacciones</li>
-                    <li>Cálculo automático de ingresos, gastos y balance general</li>
-                    <li>Persistencia de datos con LocalStorage</li>
-                    <li>Formato de moneda en pesos colombianos (COP)</li>
-                    <li>Fecha y hora automática con orden por más reciente</li>
-                    <li>Filtros por tipo, categoría y descripción</li>
-                </ul>
+            <h3>Funcionalidades actuales (MVP)</h3>
+            <ul>
+                <li>Registro de ingresos y gastos con categorías dinámicas</li>
+                <li>Eliminación y edición de transacciones</li>
+                <li>Cálculo automático de ingresos, gastos y balance general</li>
+                <li>Persistencia de datos con LocalStorage</li>
+                <li>Formato de moneda en pesos colombianos (COP)</li>
+                <li>Fecha y hora automática con orden por más reciente</li>
+                <li>Filtros por tipo, categoría y descripción</li>
+            </ul>
 
-                <h3>Hoja de ruta</h3>
-                <pre>
-                    Fase 1 · Actual  →  HTML + CSS + JavaScript + LocalStorage
-                    Fase 2           →  IndexedDB
-                    Fase 3           →  React
-                    Fase 4           →  Supabase + Autenticación + Nube
-                </pre>
+            <h3>Hoja de ruta</h3>
+            <pre>
+Fase 1 · Actual  →  HTML + CSS + JavaScript + LocalStorage
+Fase 2           →  IndexedDB
+Fase 3           →  React
+Fase 4           →  Supabase + Autenticación + Nube
+            </pre>
 
-                <h3>Próximas mejoras</h3>
-                <ul>
-                    <li>Dashboard con gráficas</li>
-                    <li>Presupuesto mensual y metas de ahorro</li>
-                    <li>Exportación de datos</li>
-                    <li>Modo oscuro</li>
-                    <li>Sincronización entre dispositivos</li>
-                </ul>
-            </div>
+            <h3>Próximas mejoras</h3>
+            <ul>
+                <li>Dashboard con gráficas</li>
+                <li>Presupuesto mensual y metas de ahorro</li>
+                <li>Exportación de datos</li>
+                <li>Modo oscuro</li>
+                <li>Sincronización entre dispositivos</li>
+            </ul>
         </div>
-    <!-- MODAL GALERÍA DE IMÁGENES -->
+    </div>
 
+    <!-- MODAL GALERÍA DE IMÁGENES -->
     <div id="modal-galeria" class="modal">
 
         <div class="modal-contenido-galeria">
@@ -823,7 +821,8 @@
         </div>
 
     </div>
-<script src="./doc_js/script.js"></script>
+
+    <script src="./doc_js/script.js"></script>
 </body>
 
 </html>
