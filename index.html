@@ -534,25 +534,32 @@
 
                 <!-- Proyecto 3 -->
                 <div class="proyecto">
-                    <div class="proyecto-img">
-                        <img src="./Imagenes/sudoku.jpg" alt="Sudoku">
-                    </div>
+                    <img 
+                        src="./img/proyectos/Solven/solven.jpg"
+                        alt="Solven"
+                        onclick="abrirGaleria('solven')"
+                        style="cursor:pointer;"
+                    >
 
                     <div class="proyecto-info">
-                        <h3>Sudoku</h3>
+                        <h3>Solven</h3>
 
                         <p>
-                            Desarrollo de un juego de Sudoku con lógica de validación y
-                            generación automática del tablero.
+                            Este proyecto se desarrolla por fases como parte de mi aprendizaje en desarrollo web.
+                            Actualmente cuenta con un MVP funcional construido con JavaScript puro.
+                            Próximamente será migrado a React y conectado a una base de datos en la nube con Supabase.
                         </p>
 
                         <div class="tecnologias">
-                            <span class="tech-pill tech-python">Python <i class="fa-brands fa-python"></i></span>
+                            <span class="tech-pill tech-html">HTML <i class="fa-brands fa-html5"></i></span>
+                            <span class="tech-pill tech-css">CSS <i class="fa-brands fa-css3-alt"></i></span>
+                            <span class="tech-pill tech-javascript">JavaScript <i class="fa-brands fa-js"></i></span>
                         </div>
 
                         <div class="proyecto-links">
-                            <a href="#">Código</a>
-                            <a href="#">Demo</a>
+                            <a href="https://github.com/Frixix/NoteStack" target="_blank">Código</a>
+                            <a href="https://frixix.github.io/Solven/" target="_blank">Demo</a>
+                            <a href="javascript:void(0)" onclick="abrirModal('solven')">Ver detalles</a>
                         </div>
                     </div>
                 </div>
@@ -560,7 +567,7 @@
             </div>
         </div>
     </section>
-    <!-- SECCION CONTACTO -->
+    <!-- SECCIÓN CONTACTO -->
     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
             <h2>Contacto</h2>
@@ -630,7 +637,7 @@
             <div class="box box-brand">
                 <figure>
                     <a href="#">
-                         <img src="./img/logo.2.png" alt="Logo ">
+                        <img src="./img/logo.2.png" alt="Logo ">
                     </a>
                 </figure>
                 <h2>Robinson Rodriguez</h2>
@@ -740,6 +747,49 @@
             </pre>
         </div>
     </div>
+
+        <!-- MODAL Solven -->
+        <div id="modal-solven" class="modal">
+            <div class="modal-contenido">
+                <span class="cerrar" onclick="cerrarModal('solven')">×</span>
+
+                <h2>Solven</h2>
+
+                <p>
+                    Aplicación web personal para llevar el control de ingresos, gastos,
+                    balance, categorías y resúmenes financieros. Desarrollada por fases
+                    como parte de mi aprendizaje en desarrollo web.
+                </p>
+
+                <h3>Funcionalidades actuales (MVP)</h3>
+                <ul>
+                    <li>Registro de ingresos y gastos con categorías dinámicas</li>
+                    <li>Eliminación y edición de transacciones</li>
+                    <li>Cálculo automático de ingresos, gastos y balance general</li>
+                    <li>Persistencia de datos con LocalStorage</li>
+                    <li>Formato de moneda en pesos colombianos (COP)</li>
+                    <li>Fecha y hora automática con orden por más reciente</li>
+                    <li>Filtros por tipo, categoría y descripción</li>
+                </ul>
+
+                <h3>Hoja de ruta</h3>
+                <pre>
+                    Fase 1 · Actual  →  HTML + CSS + JavaScript + LocalStorage
+                    Fase 2           →  IndexedDB
+                    Fase 3           →  React
+                    Fase 4           →  Supabase + Autenticación + Nube
+                </pre>
+
+                <h3>Próximas mejoras</h3>
+                <ul>
+                    <li>Dashboard con gráficas</li>
+                    <li>Presupuesto mensual y metas de ahorro</li>
+                    <li>Exportación de datos</li>
+                    <li>Modo oscuro</li>
+                    <li>Sincronización entre dispositivos</li>
+                </ul>
+            </div>
+        </div>
     <!-- MODAL GALERÍA DE IMÁGENES -->
 
     <div id="modal-galeria" class="modal">

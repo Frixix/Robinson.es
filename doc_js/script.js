@@ -6,12 +6,17 @@ let menuVisible = false;
 
 function mostrarOcultarMenu() {
     const nav = document.getElementById("nav");
+    if (!nav) return;
+
     menuVisible = !menuVisible;
     nav.classList.toggle("responsive", menuVisible);
 }
 
 function seleccionar() {
-    document.getElementById("nav").classList.remove("responsive");
+    const nav = document.getElementById("nav");
+    if (!nav) return;
+
+    nav.classList.remove("responsive");
     menuVisible = false;
 }
 
@@ -30,11 +35,12 @@ const proyectos = {
         ],
         descripciones: [
             "Pantalla principal del sistema de inventario.",
-            "Módulo de gestión y registro de productos.",
-            "Registro de movimientos de salida de inventario.",
-            "Historial de operaciones del sistema."
+            "Gestión y registro de productos.",
+            "Control de salidas de inventario.",
+            "Historial de operaciones."
         ]
     },
+
     notestack: {
         modalId: "modal-notestack",
         imagenes: [
@@ -45,19 +51,39 @@ const proyectos = {
         ],
         descripciones: [
             "Pantalla principal de NoteStack.",
-            "Vista de organización de cuadernos.",
-            "Sistema de búsqueda de notas y contenido.",
-            "Gestión y edición de notas dentro de la aplicación."
+            "Organización de cuadernos.",
+            "Búsqueda de notas.",
+            "Edición de contenido."
+        ]
+    },
+
+    // 💰 SOLVEN (finanzas personales, ya coherente)
+    solven: {
+        modalId: "modal-solven",
+        imagenes: [
+            "img/proyectos/solven/pantalla-principal.jpg",
+            "img/proyectos/solven/area-de-transacción.jpg",
+            "img/proyectos/solven/filtro-categoria.jpg",
+            "img/proyectos/solven/historial-transacciones.jpg"
+            
+            
+            
+        ],
+        descripciones: [
+            "Dashboard principal con resumen financiero.",
+            "Visualización del balance general.",
+            "Registro y gestión de ingresos y gastos.",
+            "Resumen de movimientos y estado financiero."
         ]
     }
 };
 
 // =============================
-// ESTADO DE GALERÍA
+// ESTADO GLOBAL
 // =============================
 
 const estado = {
-    proyectoActual: "",
+    proyectoActual: null,
     indiceImagen: 0
 };
 
@@ -65,16 +91,12 @@ const estado = {
 // HELPERS
 // =============================
 
-function getProyecto(nombre) {
-    return proyectos[nombre] ?? null;
-}
+const getProyecto = (nombre) => proyectos[nombre] ?? null;
 
-function getModal(id) {
-    return document.getElementById(id);
-}
+const getElemento = (id) => document.getElementById(id);
 
 // =============================
-// MODALES DE PROYECTO
+// MODALES
 // =============================
 
 function abrirModal(nombreProyecto) {
@@ -82,20 +104,24 @@ function abrirModal(nombreProyecto) {
     if (!proyecto) return;
 
     cerrarTodosLosModales();
+
     estado.proyectoActual = nombreProyecto;
-    getModal(proyecto.modalId).style.display = "flex";
+
+    const modal = getElemento(proyecto.modalId);
+    if (modal) modal.style.display = "flex";
 }
 
 function cerrarModal(nombreProyecto) {
     const proyecto = getProyecto(nombreProyecto);
     if (!proyecto) return;
 
-    getModal(proyecto.modalId).style.display = "none";
+    const modal = getElemento(proyecto.modalId);
+    if (modal) modal.style.display = "none";
 }
 
 function cerrarTodosLosModales() {
     Object.values(proyectos).forEach(({ modalId }) => {
-        const modal = getModal(modalId);
+        const modal = getElemento(modalId);
         if (modal) modal.style.display = "none";
     });
 }
@@ -111,28 +137,36 @@ function abrirGaleria(nombreProyecto) {
     estado.proyectoActual = nombreProyecto;
     estado.indiceImagen = 0;
 
-    getModal("modal-galeria").style.display = "flex";
+    const modal = getElemento("modal-galeria");
+    if (modal) modal.style.display = "flex";
+
     actualizarGaleria();
 }
 
 function cerrarGaleria() {
-    getModal("modal-galeria").style.display = "none";
+    const modal = getElemento("modal-galeria");
+    if (modal) modal.style.display = "none";
 }
 
 function abrirDescripcion() {
     cerrarGaleria();
-    const proyecto = getProyecto(estado.proyectoActual);
-    if (!proyecto) return;
 
-    getModal(proyecto.modalId).style.display = "flex";
+    if (!estado.proyectoActual) return;
+
+    abrirModal(estado.proyectoActual);
 }
 
 function actualizarGaleria() {
     const proyecto = getProyecto(estado.proyectoActual);
     if (!proyecto) return;
 
-    getModal("imagen-galeria").src = proyecto.imagenes[estado.indiceImagen];
-    getModal("descripcion-imagen").textContent = proyecto.descripciones[estado.indiceImagen];
+    const imagen = getElemento("imagen-galeria");
+    const descripcion = getElemento("descripcion-imagen");
+
+    if (!imagen || !descripcion) return;
+
+    imagen.src = proyecto.imagenes[estado.indiceImagen];
+    descripcion.textContent = proyecto.descripciones[estado.indiceImagen];
 }
 
 function cambiarImagen(direccion) {
@@ -140,9 +174,33 @@ function cambiarImagen(direccion) {
     if (!proyecto) return;
 
     const total = proyecto.imagenes.length;
-    estado.indiceImagen = (estado.indiceImagen + direccion + total) % total;
+
+    estado.indiceImagen =
+        (estado.indiceImagen + direccion + total) % total;
+
     actualizarGaleria();
 }
 
-function imagenSiguiente() { cambiarImagen(1);  }
-function imagenAnterior()  { cambiarImagen(-1); }
+const imagenSiguiente = () => cambiarImagen(1);
+const imagenAnterior = () => cambiarImagen(-1);
+
+// =============================
+// UX EXTRA (PRO LEVEL)
+// =============================
+
+// Cerrar con ESC
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        cerrarGaleria();
+        cerrarTodosLosModales();
+    }
+});
+
+// Cerrar al hacer click fuera del modal
+window.addEventListener("click", (e) => {
+    document.querySelectorAll(".modal").forEach(modal => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
