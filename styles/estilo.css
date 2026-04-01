@@ -2172,4 +2172,155 @@ footer .arriba {
     }
 }
 
-
+ /* Estilos adicionales específicos para la página de proyectos */
+        
+        /* Active nav link */
+        nav ul li a.active {
+            color: var(--color-primary);
+        }
+        
+        /* Contenedor de imagen con overlay de lupa */
+        .card-img {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card-proyecto:hover .card-overlay {
+            opacity: 1;
+        }
+        
+        .card-overlay i {
+            font-size: 48px;
+            color: white;
+            transform: scale(0.5);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-proyecto:hover .card-overlay i {
+            transform: scale(1);
+        }
+        
+        /* Características del proyecto */
+        .caracteristicas-proyecto {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 16px 0;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .caracteristicas-proyecto span {
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--color-text-muted);
+        }
+        
+        .caracteristicas-proyecto span i {
+            color: var(--color-primary);
+            font-size: 11px;
+        }
+        
+        /* Botón ver más */
+        .ver-mas-container {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .btn-ver-mas {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(28, 182, 152, 0.3);
+        }
+        
+        .btn-ver-mas:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(28, 182, 152, 0.4);
+            gap: 16px;
+        }
+        
+        /* Botones de acción */
+        .btn-demo, .btn-code {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Ajuste para el header fixed */
+        body {
+            padding-top: 75px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            body {
+                padding-top: 72px;
+            }
+            
+            .card-overlay i {
+                font-size: 36px;
+            }
+            
+            .caracteristicas-proyecto {
+                gap: 8px;
+            }
+            
+            .caracteristicas-proyecto span {
+                font-size: 10px;
+            }
+        }
+        
+        /* Asegurar que las tecnologías tengan el mismo estilo que en el portafolio */
+        .tecnologias {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        /* Los colores ya están definidos en tu CSS principal, solo aseguramos consistencia */
+        .tech-pill:hover {
+            transform: translateY(-2px);
+        }

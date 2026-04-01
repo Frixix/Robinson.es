@@ -258,7 +258,7 @@
 
                 <!-- BOTÓN VER MÁS PROYECTOS -->
                 <div class="ver-mas-container">
-                    <a href="https://github.com/tu-usuario" target="_blank" class="btn-ver-mas">
+                    <a href="https://github.com/Frixix" target="_blank" class="btn-ver-mas">
                         <i class="fa-brands fa-github"></i> Ver más en GitHub
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -311,260 +311,174 @@
     </footer>
 
     <script>
-        // MENÚ RESPONSIVE
-        const navResponsive = document.getElementById('nav-responsive');
-        const nav = document.getElementById('nav');
-        
-        if (navResponsive) {
-            navResponsive.addEventListener('click', () => {
-                nav.classList.toggle('responsive');
-            });
-        }
 
-        // CERRAR MENÚ AL HACER CLICK EN UN ENLACE
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (nav.classList.contains('responsive')) {
-                    nav.classList.remove('responsive');
-                }
-            });
-        });
-
-        // FILTROS DE PROYECTOS
-        const filtroBtns = document.querySelectorAll('.filtro-btn');
-        const proyectos = document.querySelectorAll('.card-proyecto');
-        const noProyectos = document.getElementById('no-proyectos');
-        const gridProyectos = document.getElementById('grid-proyectos');
-
-        function filtrarProyectos(categoria) {
-            let proyectosVisibles = 0;
-            
-            proyectos.forEach(proyecto => {
-                const categoriasProyecto = proyecto.getAttribute('data-categoria');
-                
-                if (categoria === 'todos' || categoriasProyecto.includes(categoria)) {
-                    proyecto.style.display = 'block';
-                    proyectosVisibles++;
-                    setTimeout(() => {
-                        proyecto.style.opacity = '1';
-                        proyecto.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    proyecto.style.display = 'none';
-                }
-            });
-            
-            if (proyectosVisibles === 0) {
-                noProyectos.style.display = 'block';
-                if (gridProyectos) gridProyectos.style.minHeight = '300px';
-            } else {
-                noProyectos.style.display = 'none';
-                if (gridProyectos) gridProyectos.style.minHeight = 'auto';
-            }
-        }
-        
-        filtroBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filtroBtns.forEach(b => b.classList.remove('activo'));
-                btn.classList.add('activo');
-                const filtro = btn.getAttribute('data-filter');
-                filtrarProyectos(filtro);
-            });
-        });
-        
-        // EFECTO DE SCROLL PARA EL HEADER
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.contenedor-header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(30, 35, 38, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.backgroundColor = '#1e2326';
-                header.style.backdropFilter = 'none';
-            }
-        });
-        
-        // ANIMACIÓN DE ENTRADA PARA LAS CARDS
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        const allCards = document.querySelectorAll('.card-proyecto');
-        allCards.forEach(card => {
-            if (card.style.display !== 'none') {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            }
-        });
     </script>
 
-    <style>
-        /* Estilos adicionales específicos para la página de proyectos */
-        
-        /* Active nav link */
-        nav ul li a.active {
-            color: var(--color-primary);
-        }
-        
-        /* Contenedor de imagen con overlay de lupa */
-        .card-img {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .card-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(3px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .card-proyecto:hover .card-overlay {
-            opacity: 1;
-        }
-        
-        .card-overlay i {
-            font-size: 48px;
-            color: white;
-            transform: scale(0.5);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .card-proyecto:hover .card-overlay i {
-            transform: scale(1);
-        }
-        
-        /* Características del proyecto */
-        .caracteristicas-proyecto {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 16px 0;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .caracteristicas-proyecto span {
-            font-size: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--color-text-muted);
-        }
-        
-        .caracteristicas-proyecto span i {
-            color: var(--color-primary);
-            font-size: 11px;
-        }
-        
-        /* Botón ver más */
-        .ver-mas-container {
-            margin-top: 60px;
-            text-align: center;
-        }
-        
-        .btn-ver-mas {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(28, 182, 152, 0.3);
-        }
-        
-        .btn-ver-mas:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(28, 182, 152, 0.4);
-            gap: 16px;
-        }
-        
-        /* Botones de acción */
-        .btn-demo, .btn-code {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        /* Scroll suave */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Ajuste para el header fixed */
-        body {
-            padding-top: 75px;
-        }
-        
-        @media screen and (max-width: 768px) {
-            body {
-                padding-top: 72px;
-            }
-            
-            .card-overlay i {
-                font-size: 36px;
-            }
-            
-            .caracteristicas-proyecto {
-                gap: 8px;
-            }
-            
-            .caracteristicas-proyecto span {
-                font-size: 10px;
-            }
-        }
-        
-        /* Asegurar que las tecnologías tengan el mismo estilo que en el portafolio */
-        .tecnologias {
-            margin: 15px 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tech-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        /* Los colores ya están definidos en tu CSS principal, solo aseguramos consistencia */
-        .tech-pill:hover {
-            transform: translateY(-2px);
-        }
-    </style>
+
+
+        <div id="modal-inventario" class="modal">
+            <div class="modal-contenido">
+
+                <!-- CERRAR -->
+                <span class="cerrar" onclick="cerrarModal('inventario')">×</span>
+
+                <!-- TITULO -->
+                <h2>Inventario 2.0</h2>
+
+                <!-- DESCRIPCIÓN -->
+                <p>
+                    Sistema de gestión de inventario desarrollado en Python
+                    con interfaz Tkinter y base de datos SQLite.
+                </p>
+
+                <!-- TECNOLOGÍAS -->
+                <div class="tecnologias">
+                    <span class="tech-pill tech-python">Python <i class="fa-brands fa-python"></i></span>
+                    <span class="tech-pill tech-tkinter">Tkinter <i class="fa-regular fa-window-maximize"></i></span>
+                    <span class="tech-pill tech-sqlite">SQLite <i class="fa-solid fa-database"></i></span>
+                </div>
+
+                <!-- CARACTERÍSTICAS -->
+                <h3>Características</h3>
+                <ul>
+                    <li>CRUD completo de productos</li>
+                    <li>Control de stock en tiempo real</li>
+                    <li>Historial de movimientos</li>
+                    <li>Exportación de datos</li>
+                </ul>
+
+                <!-- IMAGEN / PREVIEW -->
+                <div class="modal-preview">
+                    <img src="./img/proyectos/Inventario_2.0/inventario_inicio.jpg" alt="Inventario App">
+                </div>
+
+                <!-- BOTONES (CLAVE PARA PORTAFOLIO) -->
+                <div class="modal-acciones">
+                    <a href="https://github.com/Frixix/Inventario-2.0" target="_blank" class="btn-code">
+                        <i class="fa-brands fa-github"></i> Código
+                    </a>
+
+                    <a href="javascript:void(0)" onclick="abrirGaleria('inventario')" class="btn-demo">
+                        <i class="fa-solid fa-images"></i> Ver imágenes
+                    </a>
+                </div>
+
+                <!-- EXTRA PRO (VENTA) -->
+                <div class="modal-cta">
+                    <p>¿Quieres un sistema similar para tu negocio?</p>
+                    <a href="https://wa.me/573104932777" target="_blank" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar desarrollo
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    <!-- MODAL NoteStack -->
+    <div id="modal-notestack" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('notestack')">×</span>
+
+            <h2>NoteStack</h2>
+
+            <p>
+                Aplicación web SPA desarrollada con HTML, CSS y JavaScript puro
+                para organizar información mediante cuadernos y notas.
+            </p>
+
+            <h3>Características</h3>
+            <ul>
+                <li>Creación y edición de cuadernos</li>
+                <li>Creación, búsqueda y eliminación de notas</li>
+                <li>Guardado automático en LocalStorage</li>
+                <li>Arquitectura modular y ligera</li>
+            </ul>
+
+            <h3>Estructura del proyecto</h3>
+
+            <pre>
+                UI
+                │
+                ├── Controller
+                │
+                ├── Services
+                │
+                └── Storage (LocalStorage)
+            </pre>
+        </div>
+    </div>
+
+    <!-- MODAL Solven -->
+    <div id="modal-solven" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('solven')">×</span>
+
+            <h2>Solven</h2>
+
+            <p>
+                Aplicación web personal para llevar el control de ingresos, gastos,
+                balance, categorías y resúmenes financieros. Desarrollada por fases
+                como parte de mi aprendizaje en desarrollo web.
+            </p>
+
+            <h3>Funcionalidades actuales (MVP)</h3>
+            <ul>
+                <li>Registro de ingresos y gastos con categorías dinámicas</li>
+                <li>Eliminación y edición de transacciones</li>
+                <li>Cálculo automático de ingresos, gastos y balance general</li>
+                <li>Persistencia de datos con LocalStorage</li>
+                <li>Formato de moneda en pesos colombianos (COP)</li>
+                <li>Fecha y hora automática con orden por más reciente</li>
+                <li>Filtros por tipo, categoría y descripción</li>
+            </ul>
+
+            <h3>Hoja de ruta</h3>
+            <pre>
+                Fase 1 · Actual  →  HTML + CSS + JavaScript + LocalStorage
+                Fase 2           →  IndexedDB
+                Fase 3           →  React
+                Fase 4           →  Supabase + Autenticación + Nube
+            </pre>
+
+            <h3>Próximas mejoras</h3>
+            <ul>
+                <li>Dashboard con gráficas</li>
+                <li>Presupuesto mensual y metas de ahorro</li>
+                <li>Exportación de datos</li>
+                <li>Modo oscuro</li>
+                <li>Sincronización entre dispositivos</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL GALERÍA DE IMÁGENES -->
+    <div id="modal-galeria" class="modal">
+
+        <div class="modal-contenido-galeria">
+
+            <span class="cerrar" onclick="cerrarGaleria()">×</span>
+
+            <!-- Zonas clic tipo TikTok -->
+            <div class="zona izquierda" onclick="imagenAnterior()"></div>
+            <div class="zona derecha" onclick="imagenSiguiente()"></div>
+
+            <!-- Imagen -->
+            <img id="imagen-galeria" src="" alt="Imagen del proyecto">
+
+            <!-- Descripción -->
+            <p id="descripcion-imagen"></p>
+
+            <!-- Botón para ir a la descripción -->
+            <button onclick="abrirDescripcion()" class="btn-descripcion">
+                Ver descripción del proyecto
+            </button>
+
+        </div>
+
+    </div>
+
+<script src="../doc_js/script.js"></script>
 </body>
+
+
 </html>

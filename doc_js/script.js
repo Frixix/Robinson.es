@@ -24,14 +24,14 @@ function seleccionar() {
 // DATOS DE PROYECTOS
 // =============================
 
-const proyectos = {
+const proyectosData = {
     inventario: {
         modalId: "modal-inventario",
         imagenes: [
-            "img/proyectos/Inventario_2.0/inventario_inicio.jpg",
-            "img/proyectos/Inventario_2.0/entrada_inventario.jpg",
-            "img/proyectos/Inventario_2.0/salida_inventario.jpg",
-            "img/proyectos/Inventario_2.0/historial_salidas.jpg"
+            "../img/proyectos/Inventario_2.0/inventario_inicio.jpg",
+            "../img/proyectos/Inventario_2.0/entrada_inventario.jpg",
+            "../img/proyectos/Inventario_2.0/salida_inventario.jpg",
+            "../img/proyectos/Inventario_2.0/historial_salidas.jpg"
         ],
         descripciones: [
             "Pantalla principal del sistema de inventario.",
@@ -44,10 +44,10 @@ const proyectos = {
     notestack: {
         modalId: "modal-notestack",
         imagenes: [
-            "img/proyectos/Notestack/pantalla_principal.jpg",
-            "img/proyectos/Notestack/cuaderno.jpg",
-            "img/proyectos/Notestack/notas.jpg",
-            "img/proyectos/Notestack/cuerpo_cuaderno.jpg"
+            "../img/proyectos/Notestack/pantalla_principal.jpg",
+            "../img/proyectos/Notestack/cuaderno.jpg",
+            "../img/proyectos/Notestack/notas.jpg",
+            "../img/proyectos/Notestack/cuerpo_cuaderno.jpg"
         ],
         descripciones: [
             "Pantalla principal de NoteStack.",
@@ -57,21 +57,21 @@ const proyectos = {
         ]
     },
 
-        solven: {
-            modalId: "modal-solven",
-            imagenes: [
-                "img/proyectos/Solven/solven.jpg",
-                "img/proyectos/Solven/pantalla-principal.jpg",
-                "img/proyectos/Solven/area-de-transacción.jpg",
-                "img/proyectos/Solven/filtro-categoria.jpg"
-            ],
-            descripciones: [
-                "Vista general de Solven, app de finanzas personales.",
-                "Pantalla principal con resumen de ingresos, gastos y balance.",
-                "Área de registro y gestión de transacciones.",
-                "Filtros por categoría y tipo de movimiento."
-            ]
-        }
+    solven: {
+        modalId: "modal-solven",
+        imagenes: [
+            "../img/proyectos/Solven/solven.jpg",
+            "../img/proyectos/Solven/pantalla-principal.jpg",
+            "../img/proyectos/Solven/area-de-transacción.jpg",
+            "../img/proyectos/Solven/filtro-categoria.jpg"
+        ],
+        descripciones: [
+            "Vista general de Solven.",
+            "Resumen de ingresos y gastos.",
+            "Gestión de transacciones.",
+            "Filtros por categoría."
+        ]
+    }
 };
 
 // =============================
@@ -87,8 +87,7 @@ const estado = {
 // HELPERS
 // =============================
 
-const getProyecto = (nombre) => proyectos[nombre] ?? null;
-
+const getProyecto = (nombre) => proyectosData[nombre] ?? null;
 const getElemento = (id) => document.getElementById(id);
 
 // =============================
@@ -116,7 +115,7 @@ function cerrarModal(nombreProyecto) {
 }
 
 function cerrarTodosLosModales() {
-    Object.values(proyectos).forEach(({ modalId }) => {
+    Object.values(proyectosData).forEach(({ modalId }) => {
         const modal = getElemento(modalId);
         if (modal) modal.style.display = "none";
     });
@@ -181,10 +180,10 @@ const imagenSiguiente = () => cambiarImagen(1);
 const imagenAnterior = () => cambiarImagen(-1);
 
 // =============================
-// UX EXTRA (PRO LEVEL)
+// EVENTOS GLOBALES
 // =============================
 
-// Cerrar con ESC
+// ESC para cerrar
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
         cerrarGaleria();
@@ -192,11 +191,116 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-// Cerrar al hacer click fuera del modal
+// Click fuera del modal
 window.addEventListener("click", (e) => {
     document.querySelectorAll(".modal").forEach(modal => {
         if (e.target === modal) {
             modal.style.display = "none";
         }
     });
+});
+
+// =============================
+// MENU RESPONSIVE (EVENTOS)
+// =============================
+
+const navResponsive = document.getElementById('nav-responsive');
+const nav = document.getElementById('nav');
+
+if (navResponsive && nav) {
+    navResponsive.addEventListener('click', () => {
+        nav.classList.toggle('responsive');
+    });
+}
+
+// Cerrar menú al hacer click
+const navLinks = document.querySelectorAll('nav ul li a');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (nav && nav.classList.contains('responsive')) {
+            nav.classList.remove('responsive');
+        }
+    });
+});
+
+// =============================
+// FILTROS DE PROYECTOS (FIX)
+// =============================
+
+const filtroBtns = document.querySelectorAll('.filtro-btn');
+const proyectosCards = document.querySelectorAll('.card-proyecto');
+const noProyectos = document.getElementById('no-proyectos');
+const gridProyectos = document.getElementById('grid-proyectos');
+
+function filtrarProyectos(categoria) {
+    let visibles = 0;
+
+    proyectosCards.forEach(card => {
+        const categorias = card.getAttribute('data-categoria');
+
+        if (categoria === 'todos' || categorias.includes(categoria)) {
+            card.style.display = 'block';
+            visibles++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    if (visibles === 0) {
+        noProyectos.style.display = 'block';
+        if (gridProyectos) gridProyectos.style.minHeight = '300px';
+    } else {
+        noProyectos.style.display = 'none';
+        if (gridProyectos) gridProyectos.style.minHeight = 'auto';
+    }
+}
+
+filtroBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filtroBtns.forEach(b => b.classList.remove('activo'));
+        btn.classList.add('activo');
+
+        const filtro = btn.getAttribute('data-filter');
+        filtrarProyectos(filtro);
+    });
+});
+
+// =============================
+// SCROLL HEADER
+// =============================
+
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.contenedor-header');
+    if (!header) return;
+
+    if (window.scrollY > 100) {
+        header.style.backgroundColor = 'rgba(30, 35, 38, 0.95)';
+        header.style.backdropFilter = 'blur(10px)';
+    } else {
+        header.style.backgroundColor = '#1e2326';
+        header.style.backdropFilter = 'none';
+    }
+});
+
+// =============================
+// ANIMACIONES
+// =============================
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+        }
+    });
+});
+
+document.querySelectorAll('.card-proyecto').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = '0.6s';
+
+    observer.observe(card);
 });
