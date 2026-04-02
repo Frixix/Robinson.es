@@ -1,57 +1,80 @@
 /* ============================= */
 /* FUENTES */
 /* ============================= */
+
+/* Importa la fuente "Work Sans" desde Google Fonts (normal e itálica) */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital@0;1&display=swap');
+
 
 /* ============================= */
 /* VARIABLES GLOBALES */
 /* ============================= */
+
+/* Define tokens de diseño reutilizables en todo el CSS mediante var(--nombre) */
 :root {
-    --color-bg-dark: #081d30;
-    --color-bg-mid: #0f3454;
-    --color-surface: #252A2E;
-    --color-surface-strong: #020020;
+    --color-bg-dark: #081d30;           /* Fondo oscuro principal */
+    --color-bg-mid: #0f3454;            /* Fondo azul intermedio */
+    --color-surface: #252A2E;           /* Superficie de tarjetas/paneles */
+    --color-surface-strong: #020020;    /* Superficie muy oscura (casi negra con tono azul) */
 
-    --color-primary: #1cb698;
-    --color-accent: #44a4c2;
-    --color-accent-soft: #add8e6;
+    --color-primary: #1cb698;           /* Color principal (verde-turquesa) */
+    --color-accent: #44a4c2;            /* Color de acento (azul claro) */
+    --color-accent-soft: #add8e6;       /* Acento suave (azul muy claro) */
 
-    --color-text: #ffffff;
-    --color-text-muted: #ccc;
+    --color-text: #ffffff;              /* Texto principal (blanco) */
+    --color-text-muted: #ccc;           /* Texto secundario/atenuado (gris) */
 }
+
 
 /* ============================= */
 /* RESET GLOBAL */
 /* ============================= */
+
+/* Elimina márgenes y rellenos por defecto del navegador en todos los elementos.
+   box-sizing: border-box hace que el padding y el borde se incluyan
+   dentro del ancho/alto declarado, evitando desbordamientos inesperados. */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+
 /* ============================= */
 /* BASE HTML / BODY */
 /* ============================= */
+
+/* scroll-behavior: smooth → el scroll animado al hacer clic en anclas (#sección)
+   scroll-padding-top: compensa el header fijo al hacer scroll a una sección */
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 40px;
 }
 
+/* Fuente base de todo el sitio. padding-top deja espacio para el header fijo */
 body {
     font-family: 'Work Sans', sans-serif;
     padding-top: 75px;
 }
 
+
 /* ============================= */
 /* SCROLL SECCIONES */
 /* ============================= */
+
+/* Cuando el navegador hace scroll automático a una sección con id,
+   deja un margen superior para que el contenido no quede detrás del header */
 section[id] {
     scroll-margin-top: 40px;
 }
 
+
 /* ============================= */
 /* HEADER / NAVEGACIÓN */
 /* ============================= */
+
+/* Barra de navegación fija en la parte superior de la pantalla.
+   z-index: 99 la mantiene por encima del contenido al hacer scroll */
 .contenedor-header {
     background-color: #1e2326;
     position: fixed;
@@ -61,15 +84,17 @@ section[id] {
     z-index: 99;
 }
 
+/* Header interno centrado y con distribución flex entre logo y nav */
 .contenedor-header header {
     max-width: 1100px;
     margin: auto;
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo a la izquierda, nav a la derecha */
     align-items: center;
 }
 
+/* Estilo del enlace del logo: fuente del sistema, grande y en color suave */
 .contenedor-header header .logo a {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 36px;
@@ -77,23 +102,27 @@ section[id] {
     text-decoration: none;
 }
 
+/* Lista del menú en fila horizontal, sin viñetas */
 .contenedor-header header nav ul {
     display: flex;
     list-style: none;
 }
 
+/* Links del menú: sin subrayado, transición suave de color */
 .contenedor-header header nav ul li a {
     color: var(--color-text);
     margin: 0 15px;
     padding: 3px;
     text-decoration: none;
-    transition: .5s;
+    transition: .5s; /* Animación al cambiar color en hover */
 }
 
+/* Cambia el color del link al pasar el mouse */
 .contenedor-header header nav ul li a:hover {
     color: var(--color-primary);
 }
 
+/* Botón hamburguesa para móviles: oculto por defecto, se muestra con media queries */
 .nav-responsive {
     display: none;
     background-color: #0b5b67;
@@ -103,161 +132,192 @@ section[id] {
     cursor: pointer;
 }
 
+
 /* ============================= */
 /* BOTÓN GLOBAL UNIFICADO */
 /* ============================= */
+
+/* Botón transparente con borde blanco. El truco del "overlay" permite
+   un efecto de relleno deslizante al hacer hover */
 .btn-cv {
     cursor: pointer;
     background-color: transparent;
     border: 2px solid var(--color-text);
-    width: fit-content;
+    width: fit-content;        /* Solo ocupa el ancho de su contenido */
     display: inline-block;
     margin: 20px auto;
     padding: 10px 22px;
     font-size: 16px;
     color: var(--color-text);
-    position: relative;
+    position: relative;        /* Necesario para posicionar el overlay hijo */
     z-index: 10;
     text-decoration: none;
-    overflow: hidden;
+    overflow: hidden;          /* Oculta el overlay cuando su ancho es 0 */
 }
 
+/* Capa de relleno que se desliza de izquierda a derecha en hover.
+   Empieza con ancho 0 y se expande al 100% */
 .btn-cv .overlay {
     position: absolute;
     top: 0;
     left: 0;
-    width: 0;
+    width: 0;                  /* Oculto por defecto */
     height: 100%;
     background-color: var(--color-accent);
-    z-index: -1;
+    z-index: -1;               /* Queda detrás del texto */
     transition: 0.6s ease;
 }
 
+/* Al hacer hover, el overlay se expande y rellena el botón */
 .btn-cv:hover .overlay {
     width: 100%;
 }
 
+/* El texto cambia a negro para contrastar con el fondo de acento */
 .btn-cv:hover {
     color: #000;
 }
 
+
 /* ============================= */
 /* SECCIÓN INICIO */
 /* ============================= */
+
+/* Hero section: imagen de fondo con overlay oscuro semi-transparente encima,
+   centrada verticalmente con flexbox */
 .inicio {
-    min-height: calc(100vh - 75px);
+    min-height: calc(100vh - 75px); /* Altura mínima descontando el header */
     height: auto;
     background: linear-gradient(to top, rgba(30, 35, 38, 0.8), rgba(30, 35, 38, 0.9)), url(../img/Mun.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 100vh;                  /* Ocupa toda la altura de la pantalla */
     color: var(--color-accent-soft);
     display: flex;
-    align-items: center;
+    align-items: center;            /* Centra el contenido verticalmente */
 }
 
+/* Tarjeta negra central con la info del perfil */
 .inicio .contenido-banner {
     padding: 20px;
     background-color: #000000;
     max-width: 350px;
-    margin: auto;
+    margin: auto;                   /* Centrada horizontalmente */
     text-align: center;
     border-radius: 40px;
 }
 
+/* Foto de perfil circular con borde */
 .inicio .contenido-banner img {
     margin-top: 40px;
     border: 10px solid #030031;
     display: block;
     width: 80%;
     margin: auto;
-    border-radius: 100%;
+    border-radius: 100%;            /* Hace la imagen perfectamente circular */
 }
 
+/* Nombre principal: grande y con fuente del sistema */
 .inicio .contenido-banner h1 {
     margin-top: 40px;
     font-size: 42px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Subtítulo/cargo: pequeño y sin negrita */
 .inicio .contenido-banner h2 {
     font-size: 15px;
     font-weight: normal;
 }
 
+/* Íconos de redes sociales: círculos con borde y animación */
 .inicio .contenido-banner .redes a {
     color: aliceblue;
     display: inline-block;
     text-decoration: none;
     border: 1px solid #ffffff;
-    border-radius: 100%;
+    border-radius: 100%;            /* Forma circular */
     width: 42px;
     height: 42px;
-    line-height: 42px;
+    line-height: 42px;              /* Centra el ícono verticalmente */
     margin: 40px 10px;
     font-size: 20px;
     transition: 0.5s;
 }
 
+/* Fondo de acento al pasar el mouse sobre el ícono de red social */
 .inicio .contenido-banner .redes a:hover {
     background-color: var(--color-accent);
 }
 
+
 /* ============================= */
 /* SECCIÓN SOBRE MÍ */
 /* ============================= */
+
+/* Sección con fondo oscuro y padding vertical generoso */
 .sobremi {
     background-color: var(--color-bg-dark);
     color: var(--color-text);
     padding: 50px 20px;
 }
 
+/* Contenido centrado y con ancho máximo */
 .sobremi .contenido-section {
     max-width: 1100px;
     margin: auto;
 }
 
+/* Título de sección grande y centrado */
 .sobremi h2 {
     font-size: 48px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-    padding: 20px, 0px;
+    padding: 20px, 0px; /* Nota: la coma aquí hace que CSS ignore este valor */
 }
 
+/* Párrafos con tamaño legible y separación entre líneas cómoda */
 .sobremi .contenido-section p {
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 20px;
 }
 
+/* Layout de dos columnas lado a lado */
 .sobremi .fila {
     display: flex;
 }
 
+/* Cada columna ocupa exactamente la mitad del ancho */
 .sobremi .fila .col {
     width: 50%;
 }
 
+/* Subtítulos de columna */
 .sobremi .fila .col h3 {
     font-size: 28px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-bottom: 25px;
 }
 
+/* Lista de datos personales sin viñetas */
 .sobremi .fila .col ul {
     list-style: none;
 }
 
+/* Separación entre cada ítem de la lista */
 .sobremi .fila .col ul li {
     margin: 12px 0;
 }
 
+/* Etiqueta del dato (ej: "Nombre:") en color suave y ancho fijo para alinear */
 .sobremi .fila .col ul li strong {
     display: inline-block;
     color: var(--color-accent-soft);
-    width: 130px;
+    width: 130px;                   /* Ancho fijo para alinear los valores en columna */
 }
 
+/* Valor del dato con fondo destacado */
 .sobremi .fila .col ul li span {
     background-color: var(--color-accent-soft);
     padding: 3px;
@@ -265,11 +325,13 @@ section[id] {
     border-radius: 5px;
 }
 
+/* Contenedor de íconos de intereses: envuelve en múltiples filas si es necesario */
 .sobremi .fila .contenedor-intereses {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;                /* Permite que los íconos bajen a la siguiente fila */
 }
 
+/* Cada tarjeta de interés: cuadrada, oscura, centrada con flex columna */
 .sobremi .fila .contenedor-intereses .interes {
     width: 100px;
     height: 100px;
@@ -277,28 +339,34 @@ section[id] {
     border-radius: 10px;
     margin: 0 15px 15px 0;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;         /* Ícono arriba, texto abajo */
     align-items: center;
     justify-content: center;
     transition: .3s;
 }
 
+/* Cambia el fondo al pasar el mouse */
 .sobremi .fila .contenedor-intereses .interes:hover {
     background-color: var(--color-accent);
 }
 
+/* Ícono grande dentro de la tarjeta de interés */
 .sobremi .fila .contenedor-intereses .interes i {
     font-size: 30px;
     margin-bottom: 10px;
 }
 
+/* El botón CV en esta sección ocupa el ancho completo disponible */
 .sobremi .btn-cv {
     display: block;
 }
 
+
 /* ============================= */
 /* SECCIÓN SKILLS */
 /* ============================= */
+
+/* Fondo azul intermedio diferenciado de la sección anterior */
 .skills {
     background-color: var(--color-bg-mid);
     color: var(--color-text);
@@ -317,6 +385,7 @@ section[id] {
     padding: 20px, 0px;
 }
 
+/* Dos columnas iguales para las skills */
 .skills .fila {
     display: flex;
 }
@@ -332,6 +401,7 @@ section[id] {
     margin-bottom: 25px;
 }
 
+/* Tarjeta de skill: fondo semi-transparente oscuro con borde sutil y sombra */
 .skills .skill-card {
     background: rgba(2, 0, 32, 0.45);
     border: 1px solid rgba(173, 216, 230, 0.18);
@@ -341,6 +411,7 @@ section[id] {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
+/* Cabecera de la tarjeta: nombre de la skill a la izquierda y nivel a la derecha */
 .skills .skill-head {
     display: flex;
     justify-content: space-between;
@@ -349,57 +420,68 @@ section[id] {
     margin-bottom: 10px;
 }
 
+/* Nombre de la skill en negrita y tamaño destacado */
 .skills .skill-head span:first-child {
     font-weight: 700;
     font-size: 18px;
 }
 
+/* Etiqueta de nivel: cápsula redondeada con fondo azul suave */
 .skills .skill-level {
     background-color: rgba(68, 164, 194, 0.18);
     color: var(--color-accent-soft);
     border: 1px solid rgba(173, 216, 230, 0.22);
-    border-radius: 999px;
+    border-radius: 999px;           /* Forma de cápsula perfecta */
     padding: 6px 12px;
     font-size: 12px;
-    white-space: nowrap;
+    white-space: nowrap;            /* Evita que el texto del nivel se parta */
 }
 
+/* Variantes de color del nivel de dominio */
+
+/* Verde: dominio sólido */
 .skills .skill-level.level-strong {
     background-color: rgba(34, 197, 94, 0.18);
     color: #86efac;
     border-color: rgba(134, 239, 172, 0.3);
 }
 
+/* Verde-amarillo: conocimiento estable */
 .skills .skill-level.level-steady {
     background-color: rgba(132, 204, 22, 0.18);
     color: #bef264;
     border-color: rgba(190, 242, 100, 0.3);
 }
 
+/* Ámbar: en proceso de aprendizaje */
 .skills .skill-level.level-learning {
     background-color: rgba(245, 158, 11, 0.18);
     color: #fcd34d;
     border-color: rgba(252, 211, 77, 0.3);
 }
 
+/* Naranja: uso con apoyo o referencias */
 .skills .skill-level.level-support {
     background-color: rgba(249, 115, 22, 0.18);
     color: #fdba74;
     border-color: rgba(253, 186, 116, 0.3);
 }
 
+/* Rojo: nivel básico o inicial */
 .skills .skill-level.level-low {
     background-color: rgba(239, 68, 68, 0.18);
     color: #fca5a5;
     border-color: rgba(252, 165, 165, 0.3);
 }
 
+/* Descripción de la skill en tono atenuado */
 .skills .skill-card p {
     color: var(--color-text-muted);
     line-height: 1.6;
     font-size: 15px;
 }
 
+/* Contenedor de etiquetas de tecnologías asociadas a la skill */
 .skills .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -407,13 +489,17 @@ section[id] {
     margin-top: 14px;
 }
 
+/* Sombra interna muy sutil en cada etiqueta de tecnología */
 .skills .skill-tags .tech-pill {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
+
 /* ============================= */
 /* SECCIÓN CURRICULUM */
 /* ============================= */
+
+/* Fondo igual al de la sección de inicio para coherencia visual */
 .curriculum {
     background-color: #081d30;
     color: #ffffff;
@@ -425,6 +511,7 @@ section[id] {
     margin: auto;
 }
 
+/* Párrafo introductorio centrado con texto suave */
 .curriculum .curriculum-intro {
     max-width: 820px;
     margin: 0 auto 18px;
@@ -434,6 +521,7 @@ section[id] {
     font-size: 17px;
 }
 
+/* Caja de destacado con degradado y borde de acento */
 .curriculum .curriculum-highlight {
     max-width: 920px;
     margin: 0 auto 42px;
@@ -447,6 +535,7 @@ section[id] {
     gap: 16px;
 }
 
+/* Etiqueta "badge" verde-turquesa: cápsula con texto en mayúsculas y letra espaciada */
 .curriculum .highlight-badge {
     display: inline-flex;
     align-items: center;
@@ -463,12 +552,14 @@ section[id] {
     white-space: nowrap;
 }
 
+/* Texto del bloque de destacado */
 .curriculum .curriculum-highlight p {
     margin: 0;
     color: #eff7fb;
     line-height: 1.7;
 }
 
+/* Título principal de la sección */
 .curriculum h2 {
     font-size: 48px;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -476,11 +567,13 @@ section[id] {
     padding: 20px 0;
 }
 
+/* Layout de dos columnas con espacio entre ellas */
 .curriculum .fila {
     display: flex;
     justify-content: space-between;
 }
 
+/* Cada columna ocupa el 49% con padding interno */
 .curriculum .fila .col {
     width: 49%;
     padding: 0 20px;
@@ -492,6 +585,7 @@ section[id] {
     margin-bottom: 10px;
 }
 
+/* Texto introductorio de cada columna */
 .curriculum .columna-intro {
     color: #b8cfde;
     line-height: 1.7;
@@ -499,6 +593,7 @@ section[id] {
     max-width: 440px;
 }
 
+/* Líneas verticales divisorias entre columnas usando border */
 .curriculum .fila .izquierda {
     border-right: 2px solid rgba(0, 198, 220, 0.24);
 }
@@ -507,6 +602,7 @@ section[id] {
     border-left: 2px solid rgba(0, 198, 220, 0.24);
 }
 
+/* Tarjeta de ítem del timeline: degradado oscuro con sombra y animación al hover */
 .curriculum .fila .item {
     padding: 24px;
     margin-bottom: 30px;
@@ -514,21 +610,24 @@ section[id] {
     border: 1px solid rgba(68, 164, 194, 0.18);
     border-radius: 20px;
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
-    position: relative;
+    position: relative;             /* Necesario para los conectores absolutos */
     transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 
+/* Efecto de elevación al pasar el mouse */
 .curriculum .fila .item:hover {
     transform: translateY(-6px);
     border-color: rgba(143, 216, 255, 0.34);
     box-shadow: 0 22px 44px rgba(0, 0, 0, 0.24);
 }
 
+/* Ítem marcado como "actual": borde verde en vez de azul */
 .curriculum .fila .item.item-actual {
     border-color: rgba(28, 182, 152, 0.34);
     box-shadow: 0 18px 40px rgba(7, 27, 41, 0.28);
 }
 
+/* Cabecera del ítem: ícono + datos en fila */
 .curriculum .item-header {
     display: flex;
     align-items: flex-start;
@@ -536,6 +635,7 @@ section[id] {
     margin-bottom: 16px;
 }
 
+/* Ícono cuadrado redondeado con degradado suave */
 .curriculum .item-icon {
     width: 52px;
     height: 52px;
@@ -543,18 +643,20 @@ section[id] {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    flex-shrink: 0;                 /* No se encoge si el contenido es largo */
     background: linear-gradient(180deg, rgba(68, 164, 194, 0.22), rgba(28, 182, 152, 0.18));
     color: var(--color-accent-soft);
     border: 1px solid rgba(173, 216, 230, 0.18);
     font-size: 20px;
 }
 
+/* Contenedor del texto junto al ícono */
 .curriculum .item-copy {
-    flex: 1;
-    min-width: 0;
+    flex: 1;                        /* Ocupa el espacio restante */
+    min-width: 0;                   /* Evita overflow en flex */
 }
 
+/* Fila de badges de metadatos (año, categoría...) */
 .curriculum .item-meta {
     display: flex;
     flex-wrap: wrap;
@@ -563,6 +665,7 @@ section[id] {
     margin-bottom: 8px;
 }
 
+/* Badge de metadato: cápsula pequeña con texto en mayúsculas */
 .curriculum .item-badge {
     display: inline-flex;
     align-items: center;
@@ -577,23 +680,27 @@ section[id] {
     text-transform: uppercase;
 }
 
+/* Variante verde para el ítem actual */
 .curriculum .item-badge.badge-current {
     background-color: rgba(28, 182, 152, 0.18);
     border-color: rgba(143, 243, 221, 0.3);
     color: #8ff3dd;
 }
 
+/* Variante dorada para ítems destacados */
 .curriculum .item-badge.badge-highlight {
     background-color: rgba(255, 197, 61, 0.15);
     border-color: rgba(255, 223, 128, 0.24);
     color: #ffe39b;
 }
 
+/* Título del ítem (cargo, título del estudio...) */
 .curriculum .fila .item h4 {
     font-size: 22px;
     margin-bottom: 6px;
 }
 
+/* Institución/empresa en azul y negrita */
 .curriculum .fila .item .casa {
     color: #44a4c2;
     font-size: 16px;
@@ -601,17 +708,20 @@ section[id] {
     display: block;
 }
 
+/* Rango de fechas en azul suave */
 .curriculum .fila .item .fecha {
     display: block;
     color: #8fcddf;
     font-weight: 600;
 }
 
+/* Descripción del ítem */
 .curriculum .fila .item p {
     line-height: 1.75;
     color: #d8e8f2;
 }
 
+/* Bordes de la línea de tiempo (versión alternativa con color primary) */
 .curriculum .fila .izq {
     border-right: 2px solid var(--color-primary);
     margin-right: 20px;
@@ -622,16 +732,18 @@ section[id] {
     margin-left: 20px;
 }
 
+/* Conector horizontal desde los ítems de la columna izquierda hacia el centro */
 .curriculum .fila .item .conectori {
     height: 2px;
     background-color: var(--color-primary);
     width: 32px;
     position: absolute;
-    top: 50%;
-    right: -32px;
+    top: 50%;                       /* Centrado verticalmente en la tarjeta */
+    right: -32px;                   /* Sale por la derecha de la tarjeta */
     z-index: 5;
 }
 
+/* Círculo al final del conector izquierdo */
 .curriculum .fila .item .conectori .circuloi {
     display: block;
     height: 12px;
@@ -640,19 +752,21 @@ section[id] {
     background-color: var(--color-primary);
     float: right;
     position: relative;
-    bottom: 5px;
+    bottom: 5px;                    /* Centra el círculo con la línea */
 }
 
+/* Conector horizontal desde los ítems de la columna derecha hacia el centro */
 .curriculum .fila .item .conectord {
     height: 2px;
     background-color: #1cb698;
     width: 32px;
     position: absolute;
     top: 50%;
-    left: -32px;
+    left: -32px;                    /* Sale por la izquierda de la tarjeta */
     z-index: 5;
 }
 
+/* Círculo al final del conector derecho */
 .curriculum .fila .item .conectord .circulod {
     display: block;
     height: 12px;
@@ -664,6 +778,7 @@ section[id] {
     bottom: 5px;
 }
 
+/* Fila de etiquetas/tecnologías al pie del ítem */
 .curriculum .item-badges {
     display: flex;
     flex-wrap: wrap;
@@ -671,6 +786,7 @@ section[id] {
     margin-top: 18px;
 }
 
+/* Cada etiqueta: fondo muy sutil, borde apenas visible */
 .curriculum .item-badges span {
     display: inline-flex;
     align-items: center;
@@ -683,9 +799,12 @@ section[id] {
     font-weight: 600;
 }
 
+
 /* ============================= */
 /* SECCIÓN PORTFOLIO */
 /* ============================= */
+
+/* Sección de proyectos con fondo azul intermedio */
 .portfolio {
     background-color: var(--color-bg-mid);
     color: var(--color-text);
@@ -703,15 +822,17 @@ section[id] {
     margin-bottom: 50px;
 }
 
+/* Etiqueta pequeña en mayúsculas sobre el título principal */
 .portfolio .section-label {
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.22em;         /* Espaciado amplio para efecto de etiqueta */
     color: var(--color-accent-soft);
     font-size: 0.85rem;
     margin-bottom: 12px;
 }
 
+/* Título alternativo de la sección */
 .portfolio h1 {
     font-size: 48px;
     text-align: center;
@@ -719,64 +840,74 @@ section[id] {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Grid responsivo de proyectos: columnas automáticas de mínimo 280px */
 .portfolio .galeria {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
+/* Tarjeta de proyecto: fondo vidrio con borde sutil y overflow oculto para la imagen */
 .portfolio .proyecto {
     position: relative;
-    overflow: hidden;
+    overflow: hidden;               /* Recorta la imagen al hacer hover:scale */
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);     /* Efecto de vidrio esmerilado */
     border: 1px solid rgba(255, 255, 255, 0.08);
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
 }
 
+/* Al hover: sube y escala levemente, cambia el borde y agrega sombra azulada */
 .portfolio .proyecto:hover {
     transform: translateY(-12px) scale(1.02);
     border: 1px solid rgba(68, 164, 194, 0.5);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(68, 164, 194, 0.2);
 }
 
+/* Imagen del proyecto con altura fija y recorte centrado */
 .portfolio .proyecto img {
     width: 100%;
     height: 220px;
-    object-fit: cover;
+    object-fit: cover;              /* Recorta sin deformar */
     display: block;
     transition: transform 0.5s ease;
 }
 
+/* La imagen hace zoom al hover del proyecto */
 .portfolio .proyecto:hover img {
     transform: scale(1.08);
 }
 
+/* Overlay que aparece encima de la imagen al hacer hover:
+   gradiente de arriba a abajo (transparente → negro) para legibilidad del texto */
 .portfolio .proyecto .overlay {
     position: absolute;
-    inset: 0;
+    inset: 0;                       /* Cubre todo el elemento padre */
     background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-end;      /* Texto pegado a la parte inferior */
     padding: 20px;
-    opacity: 0;
+    opacity: 0;                     /* Invisible por defecto */
     transition: opacity 0.4s ease;
 }
 
+/* Hace visible el overlay al hover */
 .portfolio .proyecto:hover .overlay {
     opacity: 1;
 }
 
+/* Título del overlay: sube suavemente al aparecer */
 .portfolio .overlay h3 {
     font-size: 20px;
     margin-bottom: 6px;
-    transform: translateY(10px);
+    transform: translateY(10px);    /* Empieza desplazado hacia abajo */
     transition: 0.3s;
 }
 
+/* Descripción del overlay: mismo efecto de deslizamiento */
 .portfolio .overlay p {
     font-size: 14px;
     color: var(--color-text-muted);
@@ -784,11 +915,13 @@ section[id] {
     transition: 0.3s;
 }
 
+/* Al hover: el texto sube a su posición natural */
 .portfolio .proyecto:hover .overlay h3,
 .portfolio .proyecto:hover .overlay p {
     transform: translateY(0);
 }
 
+/* Enlace dentro del overlay: cápsula con borde verde */
 .portfolio .overlay a {
     margin-top: 12px;
     text-decoration: none;
@@ -800,11 +933,13 @@ section[id] {
     transition: all 0.3s ease;
 }
 
+/* Al hover del enlace: degradado oscuro y texto negro */
 .portfolio .overlay a:hover {
     background: linear-gradient(120deg, var(--color-primary), var(--color-surface-strong));
     color: #000;
 }
 
+/* Botón "ver más" dentro del portfolio (replica el btn-cv global) */
 .portfolio .btn-cv {
     cursor: pointer;
     background-color: transparent;
@@ -821,6 +956,7 @@ section[id] {
     overflow: hidden;
 }
 
+/* Overlay del botón del portfolio (transición más lenta que el global: 1s) */
 .portfolio .btn-cv .overlay {
     position: absolute;
     top: 0;
@@ -840,18 +976,23 @@ section[id] {
     color: #000;
 }
 
+/* Contenedor del CTA al final de la sección de portfolio */
 .proyectos-cta {
     margin-top: 60px;
     text-align: center;
 }
 
+
 /* ============================= */
 /* TECNOLOGÍAS / DETALLE PROYECTO */
 /* ============================= */
+
+/* Área de info adicional del proyecto (dentro de modal o tarjeta expandida) */
 .proyecto-info {
     padding: 15px;
 }
 
+/* Contenedor de etiquetas de tecnologías usadas */
 .tecnologias {
     margin-top: 10px;
     display: flex;
@@ -859,6 +1000,7 @@ section[id] {
     gap: 8px;
 }
 
+/* Estilo base de cada etiqueta de tecnología: cápsula con ícono y texto */
 .tecnologias span {
     display: inline-flex;
     align-items: center;
@@ -874,9 +1016,11 @@ section[id] {
     font-size: 14px;
 }
 
+/* Colores específicos por tecnología */
+
 .tech-python {
-    background-color: rgba(55, 118, 171, 0.18);
-    color: #ffd43b;
+    background-color: rgba(55, 118, 171, 0.18);   /* Azul Python */
+    color: #ffd43b;                                 /* Amarillo Python */
     border-color: rgba(255, 212, 59, 0.35);
 }
 
@@ -893,29 +1037,30 @@ section[id] {
 }
 
 .tech-html {
-    background-color: rgba(227, 79, 38, 0.18);
+    background-color: rgba(227, 79, 38, 0.18);     /* Naranja HTML */
     color: #ff9a7a;
     border-color: rgba(255, 154, 122, 0.3);
 }
 
 .tech-css {
-    background-color: rgba(21, 114, 182, 0.18);
+    background-color: rgba(21, 114, 182, 0.18);    /* Azul CSS */
     color: #7cc7ff;
     border-color: rgba(124, 199, 255, 0.3);
 }
 
 .tech-javascript {
-    background-color: rgba(247, 223, 30, 0.18);
+    background-color: rgba(247, 223, 30, 0.18);    /* Amarillo JS */
     color: #ffe66d;
     border-color: rgba(255, 230, 109, 0.3);
 }
 
 .tech-photoshop {
-    background-color: rgba(49, 168, 255, 0.18);
+    background-color: rgba(49, 168, 255, 0.18);    /* Azul Photoshop */
     color: #7fd0ff;
     border-color: rgba(127, 208, 255, 0.3);
 }
 
+/* Botones de links del proyecto (GitHub, demo...) */
 .proyecto-links {
     margin-top: 12px;
 }
@@ -931,10 +1076,12 @@ section[id] {
     transition: 0.3s;
 }
 
+/* Rellena con el color primario al hover */
 .proyecto-links a:hover {
     background-color: var(--color-primary);
 }
 
+/* Sección de características del proyecto */
 .caracteristicas {
     margin-top: 12px;
 }
@@ -951,6 +1098,7 @@ section[id] {
     line-height: 1.5;
 }
 
+/* Bloque de modelo de base de datos con código */
 .modelo-db {
     margin-top: 10px;
 }
@@ -961,6 +1109,7 @@ section[id] {
     color: #add8e6;
 }
 
+/* Área de código con scroll horizontal si el texto es muy largo */
 .modelo-db pre {
     background-color: #020020;
     padding: 10px;
@@ -969,20 +1118,25 @@ section[id] {
     overflow-x: auto;
 }
 
+
 /* ============================= */
 /* MODALES */
 /* ============================= */
+
+/* Fondo oscuro semi-transparente con blur que cubre toda la pantalla.
+   display: none por defecto; se activa con JS cambiándolo a flex */
 .modal {
     display: none;
     position: fixed;
-    inset: 0;
+    inset: 0;                       /* Cubre top, right, bottom, left: 0 */
     background: rgba(0, 0, 0, 0.55);
     backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000;                  /* Por encima de todo el contenido */
 }
 
+/* Contenedor del modal: caja azul oscuro centrada */
 .modal-contenido {
     background-color: #081b29;
     color: #fff;
@@ -990,10 +1144,11 @@ section[id] {
     max-width: 700px;
     padding: 30px;
     border-radius: 12px;
-    position: relative;
+    position: relative;             /* Para el botón cerrar absoluto */
     box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.6);
 }
 
+/* Variante del modal para la galería de imágenes (más ancha) */
 .modal-contenido-galeria {
     background-color: #081b29;
     padding: 30px;
@@ -1004,6 +1159,7 @@ section[id] {
     position: relative;
 }
 
+/* Bloque de código dentro del modal */
 .modal-contenido pre {
     background-color: #020d18;
     padding: 15px;
@@ -1011,6 +1167,7 @@ section[id] {
     overflow-x: auto;
 }
 
+/* Botón "×" para cerrar el modal: posicionado en la esquina superior derecha */
 .cerrar {
     position: absolute;
     top: 12px;
@@ -1024,20 +1181,23 @@ section[id] {
     color: #00aaff;
 }
 
+/* Imagen principal de la galería del modal */
 #imagen-galeria {
     width: 100%;
     max-height: 350px;
-    object-fit: contain;
+    object-fit: contain;            /* Muestra la imagen completa sin recortar */
     border-radius: 8px;
     margin-bottom: 10px;
 }
 
+/* Descripción de la imagen en la galería */
 #descripcion-imagen {
     margin-top: 10px;
     font-size: 14px;
     color: #ccc;
 }
 
+/* Botón de descripción dentro del modal de galería */
 .btn-descripcion {
     margin-top: 15px;
     padding: 8px 18px;
@@ -1054,6 +1214,7 @@ section[id] {
     background: #17a589;
 }
 
+/* Contenedor de la galería de imágenes del proyecto */
 .galeria-proyecto {
     width: 100%;
     margin: 20px 0;
@@ -1064,6 +1225,7 @@ section[id] {
     border-radius: 8px;
 }
 
+/* Zonas invisibles de click para navegar entre imágenes (izquierda/derecha) */
 .zona {
     position: absolute;
     width: 50%;
@@ -1081,13 +1243,14 @@ section[id] {
     right: 0;
 }
 
+/* Flechas generadas con ::before, visibles solo al hover */
 .zona::before {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     font-size: 40px;
     color: white;
-    opacity: 0;
+    opacity: 0;                     /* Ocultas por defecto */
     transition: 0.3s;
 }
 
@@ -1101,14 +1264,17 @@ section[id] {
     right: 20px;
 }
 
+/* Las flechas aparecen al pasar el mouse sobre la zona */
 .zona:hover::before {
     opacity: 1;
 }
 
+/* Leve fondo al hacer clic en la zona */
 .zona:active {
     background: rgba(255, 255, 255, 0.05);
 }
 
+/* Clases de posición para botones de navegación (no parecen usarse actualmente) */
 .btn-prev {
     left: -50px;
 }
@@ -1117,26 +1283,27 @@ section[id] {
     right: -50px;
 }
 
+/* El cursor de la imagen en la galería indica que es clickeable */
 .modal-contenido-galeria img {
     cursor: pointer;
 }
-
 
 
 /* ============================= */
 /* PÁGINA PROYECTOS - MEJORAS */
 /* ============================= */
 
+/* Página independiente de proyectos con degradado de fondo y padding amplio */
 .proyectos-page {
     background: linear-gradient(135deg, var(--color-bg-mid) 0%, var(--color-bg-dark) 100%);
     color: var(--color-text);
-    padding: 120px 20px 80px;
+    padding: 120px 20px 80px;       /* Padding superior grande por el header fijo */
     min-height: 100vh;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: hidden;             /* Evita scroll horizontal por elementos decorativos */
 }
 
-/* Efecto de fondo decorativo */
+/* Fondo decorativo: círculo difuminado verde en la esquina superior izquierda */
 .proyectos-page::before {
     content: '';
     position: absolute;
@@ -1145,37 +1312,43 @@ section[id] {
     right: 0;
     height: 400px;
     background: radial-gradient(circle at 20% 50%, rgba(28, 182, 152, 0.1), transparent 70%);
-    pointer-events: none;
+    pointer-events: none;           /* No bloquea los clics del usuario */
 }
 
+/* Contenido principal centrado y sobre el fondo decorativo */
 .proyectos-page .contenido-section {
     max-width: 1200px;
     margin: auto;
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 1;                     /* Por encima del ::before decorativo */
 }
 
+/* Título con degradado de color y animación de entrada */
 .proyectos-page h1 {
     font-size: 56px;
     margin-bottom: 20px;
     background: linear-gradient(135deg, #fff, var(--color-accent-soft));
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent; /* Hace visible el degradado en el texto */
     animation: fadeInUp 0.8s ease;
 }
 
+/* Párrafo introductorio con animación de entrada retrasada */
 .proyectos-page .intro {
     color: var(--color-text-muted);
     max-width: 700px;
     margin: 0 auto 50px;
     line-height: 1.8;
     font-size: 18px;
-    animation: fadeInUp 0.8s ease 0.1s both;
+    animation: fadeInUp 0.8s ease 0.1s both; /* "both" mantiene el estado inicial */
 }
 
+
 /* FILTROS MEJORADOS */
+
+/* Contenedor de botones de filtro centrado y con espacio entre ellos */
 .filtros {
     margin-bottom: 50px;
     display: flex;
@@ -1185,6 +1358,7 @@ section[id] {
     animation: fadeInUp 0.8s ease 0.2s both;
 }
 
+/* Botón de filtro: estilo vidrio esmerilado */
 .filtros button {
     padding: 10px 28px;
     border-radius: 40px;
@@ -1199,12 +1373,14 @@ section[id] {
     letter-spacing: 0.5px;
 }
 
+/* Hover del filtro: fondo verde semi-transparente y borde de acento */
 .filtros button:hover {
     background: rgba(28, 182, 152, 0.3);
     border-color: var(--color-primary);
     transform: translateY(-2px);
 }
 
+/* Botón activo: degradado sólido verde-azul con sombra */
 .filtros .activo {
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     border-color: transparent;
@@ -1212,12 +1388,16 @@ section[id] {
     box-shadow: 0 4px 15px rgba(28, 182, 152, 0.3);
 }
 
+/* Hover del filtro activo: mayor elevación y sombra */
 .filtros .activo:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(28, 182, 152, 0.4);
 }
 
+
 /* GRID MEJORADO */
+
+/* Grid de tarjetas de proyecto: columnas automáticas de mínimo 320px */
 .grid-proyectos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1225,17 +1405,21 @@ section[id] {
     animation: fadeInUp 0.8s ease 0.3s both;
 }
 
+
 /* CARD MEJORADA */
+
+/* Tarjeta de proyecto: degradado oscuro, esquinas redondeadas y border sutil */
 .card-proyecto {
     background: linear-gradient(180deg, rgba(15, 52, 84, 0.95), rgba(8, 29, 48, 0.98));
     border-radius: 20px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Easing elástico */
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     cursor: pointer;
 }
 
+/* Línea de acento en la parte superior de la tarjeta (oculta por defecto) */
 .card-proyecto::before {
     content: '';
     position: absolute;
@@ -1244,21 +1428,26 @@ section[id] {
     right: 0;
     height: 4px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
-    transform: scaleX(0);
+    transform: scaleX(0);           /* Escalada a 0 horizontalmente = invisible */
     transition: transform 0.4s ease;
 }
 
+/* Hover de la tarjeta: sube, sombra dramática y borde verde */
 .card-proyecto:hover {
     transform: translateY(-12px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
     border-color: rgba(28, 182, 152, 0.5);
 }
 
+/* La línea superior se despliega al hover */
 .card-proyecto:hover::before {
     transform: scaleX(1);
 }
 
+
 /* IMAGEN MEJORADA */
+
+/* Imagen con altura fija y zoom suave al hover */
 .card-proyecto img {
     width: 100%;
     height: 220px;
@@ -1270,7 +1459,10 @@ section[id] {
     transform: scale(1.05);
 }
 
+
 /* CONTENIDO MEJORADO */
+
+/* Área de texto debajo de la imagen */
 .card-content {
     padding: 24px;
     text-align: left;
@@ -1283,6 +1475,7 @@ section[id] {
     transition: color 0.3s ease;
 }
 
+/* El título se vuelve verde al hover de la tarjeta */
 .card-proyecto:hover .card-content h3 {
     color: var(--color-primary);
 }
@@ -1294,7 +1487,10 @@ section[id] {
     line-height: 1.6;
 }
 
+
 /* TAGS MEJORADOS */
+
+/* Etiquetas de categoría de cada proyecto */
 .tags {
     display: flex;
     gap: 10px;
@@ -1314,17 +1510,22 @@ section[id] {
     transition: all 0.3s ease;
 }
 
+/* Los tags se intensifican al hover de la tarjeta */
 .card-proyecto:hover .tags span {
     background: rgba(28, 182, 152, 0.25);
     border-color: rgba(28, 182, 152, 0.5);
 }
 
+
 /* BOTONES MEJORADOS */
+
+/* Fila de botones de acción (Demo / Código) */
 .acciones {
     display: flex;
     gap: 12px;
 }
 
+/* Cada botón ocupa el mismo espacio disponible */
 .acciones a {
     flex: 1;
     text-align: center;
@@ -1341,6 +1542,7 @@ section[id] {
     overflow: hidden;
 }
 
+/* Efecto de destello al pasar el mouse (shimmer) */
 .acciones a::before {
     content: '';
     position: absolute;
@@ -1352,10 +1554,12 @@ section[id] {
     transition: left 0.5s ease;
 }
 
+/* El destello cruza el botón de izquierda a derecha */
 .acciones a:hover::before {
     left: 100%;
 }
 
+/* Al hover: fondo degradado verde-azul y texto negro */
 .acciones a:hover {
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     border-color: transparent;
@@ -1363,11 +1567,14 @@ section[id] {
     transform: translateY(-2px);
 }
 
+
 /* ANIMACIONES */
+
+/* Animación reutilizable: fade-in desde abajo hacia arriba */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(30px); /* Empieza 30px más abajo */
     }
     to {
         opacity: 1;
@@ -1375,7 +1582,10 @@ section[id] {
     }
 }
 
+
 /* ESTADO VACÍO (si no hay proyectos) */
+
+/* Mensaje cuando no hay proyectos que mostrar */
 .no-proyectos {
     text-align: center;
     padding: 60px 20px;
@@ -1389,7 +1599,9 @@ section[id] {
     color: var(--color-primary);
 }
 
+
 /* RESPONSIVE MEJORADO */
+
 @media screen and (max-width: 768px) {
     .proyectos-page {
         padding: 100px 16px 60px;
@@ -1414,6 +1626,7 @@ section[id] {
         font-size: 13px;
     }
 
+    /* En móvil: una sola columna de proyectos */
     .grid-proyectos {
         grid-template-columns: 1fr;
         gap: 25px;
@@ -1453,21 +1666,29 @@ section[id] {
     }
 }
 
+
 /* EFECTO DE CARGA PARA LAS CARDS */
+
+/* Las tarjetas empiezan invisibles y aparecen en secuencia escalonada */
 .card-proyecto {
     opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
+    animation: fadeInUp 0.6s ease forwards; /* "forwards" mantiene el estado final */
 }
 
+/* Cada tarjeta tiene un retraso mayor para crear efecto en cascada */
 .card-proyecto:nth-child(1) { animation-delay: 0.1s; }
 .card-proyecto:nth-child(2) { animation-delay: 0.2s; }
 .card-proyecto:nth-child(3) { animation-delay: 0.3s; }
 .card-proyecto:nth-child(4) { animation-delay: 0.4s; }
 .card-proyecto:nth-child(5) { animation-delay: 0.5s; }
 .card-proyecto:nth-child(6) { animation-delay: 0.6s; }
+
+
 /* ============================= */
 /* SECCIÓN CONTACTO */
 /* ============================= */
+
+/* Sección con imagen de fondo (igual al inicio) y overlay oscuro */
 .contacto {
     background: linear-gradient(to top, rgba(30, 35, 38, 0.85), rgba(30, 35, 38, 0.95)), url(../img/Mun.jpg);
     background-size: cover;
@@ -1494,6 +1715,7 @@ section[id] {
     color: var(--color-accent-soft);
 }
 
+/* Layout de dos columnas con gap generoso: formulario + info de contacto */
 .contacto .fila {
     display: flex;
     gap: 50px;
@@ -1501,12 +1723,14 @@ section[id] {
     align-items: flex-start;
 }
 
+/* Cada columna crece igual pero con límites de ancho */
 .contacto .col {
     flex: 1;
     min-width: 280px;
     max-width: 480px;
 }
 
+/* Inputs y textarea del formulario con fondo semi-transparente */
 .contacto .col input,
 .contacto .col textarea {
     width: 100%;
@@ -1520,23 +1744,27 @@ section[id] {
     transition: 0.3s;
 }
 
+/* Placeholder en blanco semi-transparente para legibilidad */
 .contacto .col input::placeholder,
 .contacto .col textarea::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
+/* Al hacer foco: fondo azulado y borde del color primario */
 .contacto .col input:focus,
 .contacto .col textarea:focus {
     background-color: rgba(31, 90, 122, 0.9);
     border-color: var(--color-primary);
-    outline: none;
+    outline: none;                  /* Elimina el outline por defecto del navegador */
 }
 
+/* El textarea puede agrandarse verticalmente pero no horizontalmente */
 .contacto .col textarea {
     resize: vertical;
     min-height: 150px;
 }
 
+/* Botón de envío: mismo estilo que btn-cv pero con overlay via transform */
 .contacto button {
     background-color: transparent;
     border: 2px solid #ffffff;
@@ -1549,16 +1777,18 @@ section[id] {
     transition: color 0.3s;
 }
 
+/* El overlay se desliza con scaleX en vez de width (más performante) */
 .contacto button .overlay {
     position: absolute;
     inset: 0;
     background-color: var(--color-primary);
     z-index: -1;
-    transform: scaleX(0);
+    transform: scaleX(0);           /* Oculto: escalado a 0 desde la izquierda */
     transform-origin: left;
     transition: transform 0.4s ease;
 }
 
+/* Al hover: el overlay se despliega hacia la derecha */
 .contacto button:hover .overlay {
     transform: scaleX(1);
 }
@@ -1567,6 +1797,7 @@ section[id] {
     color: #000;
 }
 
+/* Lista de datos de contacto sin viñetas */
 .contacto .col ul {
     list-style: none;
 }
@@ -1581,6 +1812,7 @@ section[id] {
     color: var(--color-accent-soft);
 }
 
+/* Íconos de redes sociales en la sección de contacto */
 .contacto .redes a {
     color: #fff;
     display: inline-block;
@@ -1600,9 +1832,12 @@ section[id] {
     background-color: var(--color-primary);
 }
 
+
 /* ============================= */
 /* FOOTER / PIE DE PÁGINA */
 /* ============================= */
+
+/* Footer con degradado oscuro y borde superior sutil */
 footer {
     background: linear-gradient(180deg, #07111a 0%, #081d30 55%, #0a1724 100%);
     color: var(--color-text);
@@ -1617,6 +1852,7 @@ footer .redes {
     margin-bottom: 20px;
 }
 
+/* Íconos del footer: oscuros con borde sutil */
 footer .redes a {
     color: var(--color-accent-soft);
     display: inline-block;
@@ -1632,6 +1868,7 @@ footer .redes a {
     background-color: rgba(4, 24, 39, 0.78);
 }
 
+/* Al hover: el ícono se invierte (fondo claro, texto oscuro) y sube */
 footer .redes a:hover {
     color: #03131d;
     background-color: var(--color-accent-soft);
@@ -1639,6 +1876,7 @@ footer .redes a:hover {
     transform: translateY(-3px);
 }
 
+/* Botón "ir arriba": círculo verde centrado que sobresale del footer */
 footer .arriba {
     display: block;
     width: 50px;
@@ -1647,18 +1885,20 @@ footer .arriba {
     color: var(--color-text);
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    top: -25px;
+    transform: translateX(-50%);   /* Centra el botón exactamente */
+    top: -25px;                     /* Sobresale 25px por encima del footer */
     border-radius: 50%;
     line-height: 50px;
     font-size: 18px;
 }
 
+/* Contenedor del pie de página con degradado igual al footer */
 .pie-pagina {
     width: 100%;
     background: linear-gradient(180deg, #07111a 0%, #081d30 55%, #0a1724 100%);
 }
 
+/* Grid de tres columnas para el pie de página */
 .pie-pagina .grupo-1 {
     width: 100%;
     max-width: 1200px;
@@ -1670,6 +1910,7 @@ footer .arriba {
     background-color: transparent;
 }
 
+/* Tarjeta de cada columna del footer: oscura con borde y sombra */
 .pie-pagina .grupo-1 .box {
     background: linear-gradient(180deg, rgba(6, 28, 44, 0.92), rgba(5, 20, 32, 0.96));
     border: 1px solid rgba(68, 164, 194, 0.16);
@@ -1680,11 +1921,13 @@ footer .arriba {
     text-align: left;
 }
 
+/* Variante de la tarjeta de marca: fondo y borde más oscuros/verdes */
 .pie-pagina .grupo-1 .box-brand {
     background: linear-gradient(180deg, rgba(15, 52, 84, 0.98), rgba(5, 20, 32, 0.98));
     border-color: rgba(28, 182, 152, 0.24);
 }
 
+/* Contenedor del logo con imagen */
 .pie-pagina .grupo-1 .box figure {
     width: 100%;
     display: flex;
@@ -1711,6 +1954,7 @@ footer .arriba {
     text-align: left;
 }
 
+/* Íconos de redes sociales en el footer (cuadrados) */
 .pie-pagina .grupo-1 .red-social a {
     display: inline-block;
     text-decoration: none;
@@ -1728,16 +1972,19 @@ footer .arriba {
     color: #fff;
 }
 
+/* Lista de links del footer sin viñetas */
 .footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
+/* Separación entre links (solo entre ítems, no antes del primero) */
 .footer-links li + li {
     margin-top: 12px;
 }
 
+/* Links del footer: color suave con transición de color y desplazamiento */
 .footer-links a,
 .pie-pagina .grupo-1 .box p a {
     color: #d5e5ef;
@@ -1745,12 +1992,14 @@ footer .arriba {
     transition: color 0.3s ease, padding-left 0.3s ease;
 }
 
+/* Al hover: el link se vuelve más brillante y se desplaza 4px a la derecha */
 .footer-links a:hover,
 .pie-pagina .grupo-1 .box p a:hover {
     color: var(--color-accent-soft);
     padding-left: 4px;
 }
 
+/* Barra inferior del footer con copyright */
 .pie-pagina .grupo-2 {
     background-color: #08131f;
     padding: 15px 10px;
@@ -1763,33 +2012,42 @@ footer .arriba {
     font-size: 15px;
 }
 
+
 /* ============================= */
 /* MEDIA QUERIES - RESPONSIVE */
 /* ============================= */
+
+/* Pantallas entre 1100px y 980px: ajustes del header y footer */
 @media screen and (max-width: 1100px) {
     .contenedor-header header {
         padding: 15px 24px;
     }
 
+    /* Menos margen entre links del nav */
     .contenedor-header header nav ul li a {
         margin: 0 10px;
     }
 
+    /* El footer pasa a 2 columnas en vez de 3 */
     .pie-pagina .grupo-1 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 28px;
     }
 
+    /* La tarjeta de marca ocupa toda la fila */
     .pie-pagina .grupo-1 .box-brand {
         grid-column: 1 / -1;
     }
 }
 
+/* Pantallas menores a 980px: menú hamburguesa activo */
 @media screen and (max-width: 980px) {
+    /* Oculta el nav de escritorio */
     nav {
         display: none;
     }
 
+    /* Muestra el botón hamburguesa como cuadrado flex */
     .nav-responsive {
         display: inline-flex;
         align-items: center;
@@ -1798,11 +2056,12 @@ footer .arriba {
         height: 44px;
     }
 
+    /* El nav abierto en móvil aparece como panel flotante */
     nav.responsive {
         display: block;
         position: absolute;
         right: 20px;
-        top: calc(100% + 10px);
+        top: calc(100% + 10px);         /* Justo debajo del header */
         width: min(320px, calc(100vw - 40px));
         background-color: rgba(37, 42, 46, 0.98);
         border: 1px solid rgba(173, 216, 230, 0.18);
@@ -1811,10 +2070,12 @@ footer .arriba {
         padding: 14px 18px;
     }
 
+    /* Los links del menú móvil se apilan verticalmente */
     nav.responsive ul {
         display: block !important;
     }
 
+    /* Separador entre ítems del menú móvil */
     nav.responsive ul li {
         border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         padding: 0;
@@ -1824,12 +2085,14 @@ footer .arriba {
         border-bottom: none;
     }
 
+    /* Links del menú móvil con más padding para facilitar el toque */
     nav.responsive ul li a {
         display: block;
         margin: 0;
         padding: 12px 0;
     }
 
+    /* El inicio pasa a altura automática y padding en vez de 100vh */
     .inicio {
         min-height: calc(100vh - 75px);
         height: auto;
@@ -1846,6 +2109,7 @@ footer .arriba {
         font-size: 36px;
     }
 
+    /* Las filas de dos columnas añaden gap pero siguen en fila */
     .sobremi .fila,
     .skills .fila,
     .curriculum .fila,
@@ -1854,6 +2118,7 @@ footer .arriba {
     }
 }
 
+/* Pantallas menores a 768px: layout de una columna en todo */
 @media screen and (max-width: 768px) {
     body {
         padding-top: 72px;
@@ -1875,6 +2140,7 @@ footer .arriba {
         font-size: 30px;
     }
 
+    /* Títulos de sección más pequeños */
     .sobremi h2,
     .skills h2,
     .curriculum h2,
@@ -1888,6 +2154,7 @@ footer .arriba {
         margin-bottom: 32px;
     }
 
+    /* Las filas pasan a dirección columna (apiladas) */
     .sobremi .fila,
     .skills .fila,
     .curriculum .fila,
@@ -1896,6 +2163,7 @@ footer .arriba {
         flex-direction: column;
     }
 
+    /* Las columnas ocupan el 100% en móvil */
     .sobremi .fila .col,
     .skills .fila .col,
     .curriculum .fila .col {
@@ -1903,27 +2171,32 @@ footer .arriba {
         padding: 0;
     }
 
+    /* Las etiquetas de datos ya no tienen ancho fijo */
     .sobremi .fila .col ul li strong {
         width: auto;
         margin-bottom: 4px;
     }
 
+    /* Los intereses se centran y tienen gap uniforme */
     .sobremi .fila .contenedor-intereses {
         justify-content: center;
         gap: 14px;
     }
 
+    /* Cada ítem de interés ocupa el 50% menos el gap */
     .sobremi .fila .contenedor-intereses .interes {
         width: calc(50% - 7px);
         max-width: 160px;
         margin: 0;
     }
 
+    /* Los skills se apilan en lugar de estar en fila */
     .skills .skill-head {
         flex-direction: column;
         align-items: flex-start;
     }
 
+    /* Se eliminan los bordes laterales del timeline en móvil */
     .curriculum .fila .izquierda,
     .curriculum .fila .derecha,
     .curriculum .fila .izq,
@@ -1942,6 +2215,7 @@ footer .arriba {
         margin-bottom: 16px;
     }
 
+    /* El highlight del curriculum se apila verticalmente */
     .curriculum .curriculum-highlight {
         flex-direction: column;
         align-items: flex-start;
@@ -1973,6 +2247,7 @@ footer .arriba {
         font-size: 20px;
     }
 
+    /* Se ocultan los conectores del timeline en móvil */
     .curriculum .fila .item .conectori,
     .curriculum .fila .item .conectord {
         display: none;
@@ -1982,11 +2257,13 @@ footer .arriba {
         padding: 60px 20px;
     }
 
+    /* El portafolio pasa a una sola columna */
     .portfolio .galeria {
         grid-template-columns: 1fr;
         gap: 22px;
     }
 
+    /* En móvil se desactivan los efectos hover de las tarjetas */
     .portfolio .proyecto:hover {
         transform: none;
     }
@@ -1995,6 +2272,7 @@ footer .arriba {
         transform: none;
     }
 
+    /* El overlay siempre visible en móvil (no requiere hover) */
     .portfolio .overlay {
         position: static;
         opacity: 1;
@@ -2002,16 +2280,19 @@ footer .arriba {
         background: linear-gradient(180deg, rgba(4, 16, 26, 0.08), rgba(4, 16, 26, 0.96));
     }
 
+    /* El enlace ocupa todo el ancho para facilitar el toque */
     .portfolio .overlay a {
         width: 100%;
         text-align: center;
     }
 
+    /* El botón de contacto ocupa todo el ancho en móvil */
     .contacto button {
         width: 100%;
     }
 }
 
+/* Pantallas menores a 576px: ajustes finos para smartphones pequeños */
 @media screen and (max-width: 576px) {
     body {
         padding-top: 68px;
@@ -2035,7 +2316,7 @@ footer .arriba {
 
     nav.responsive {
         right: 16px;
-        width: calc(100vw - 32px);
+        width: calc(100vw - 32px);  /* Casi todo el ancho de la pantalla */
     }
 
     .inicio {
@@ -2047,6 +2328,7 @@ footer .arriba {
         border-radius: 28px;
     }
 
+    /* La imagen de perfil es más pequeña en pantallas muy pequeñas */
     .inicio .contenido-banner img {
         width: min(220px, 78%);
         border-width: 8px;
@@ -2064,6 +2346,7 @@ footer .arriba {
         line-height: 40px;
     }
 
+    /* Reduce el padding lateral de todas las secciones */
     .sobremi,
     .skills,
     .curriculum,
@@ -2073,6 +2356,7 @@ footer .arriba {
         padding-right: 16px;
     }
 
+    /* Todos los títulos se reducen al mismo tamaño */
     .sobremi h2,
     .skills h2,
     .curriculum h2,
@@ -2082,6 +2366,7 @@ footer .arriba {
         font-size: 32px;
     }
 
+    /* Textos más pequeños en secciones de contenido */
     .sobremi .contenido-section p,
     .skills .skill-card p,
     .curriculum .fila .item p,
@@ -2090,6 +2375,7 @@ footer .arriba {
         line-height: 1.7;
     }
 
+    /* Los intereses ocupan todo el ancho en pantallas muy pequeñas */
     .sobremi .fila .contenedor-intereses .interes {
         width: 100%;
         max-width: none;
@@ -2109,6 +2395,7 @@ footer .arriba {
         font-size: 11px;
     }
 
+    /* En pantallas muy pequeñas el header del ítem se apila */
     .curriculum .item-header {
         flex-direction: column;
     }
@@ -2136,12 +2423,14 @@ footer .arriba {
         padding: 6px 10px;
     }
 
+    /* El footer pasa a una sola columna */
     .pie-pagina .grupo-1 {
         grid-template-columns: 1fr;
         gap: 24px;
         padding: 45px 16px 35px;
     }
 
+    /* Las tarjetas del footer se centran */
     .pie-pagina .grupo-1 .box {
         padding: 24px 20px;
         text-align: center;
@@ -2156,6 +2445,7 @@ footer .arriba {
         justify-content: center;
     }
 
+    /* Modales casi en pantalla completa en móviles pequeños */
     .modal-contenido,
     .modal-contenido-galeria {
         width: calc(100% - 24px);
@@ -2167,160 +2457,173 @@ footer .arriba {
         right: 14px;
     }
 
+    /* Imagen de la galería más pequeña en móvil */
     #imagen-galeria {
         max-height: 260px;
     }
 }
 
- /* Estilos adicionales específicos para la página de proyectos */
-        
-        /* Active nav link */
-        nav ul li a.active {
-            color: var(--color-primary);
-        }
-        
-        /* Contenedor de imagen con overlay de lupa */
-        .card-img {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .card-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(3px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .card-proyecto:hover .card-overlay {
-            opacity: 1;
-        }
-        
-        .card-overlay i {
-            font-size: 48px;
-            color: white;
-            transform: scale(0.5);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .card-proyecto:hover .card-overlay i {
-            transform: scale(1);
-        }
-        
-        /* Características del proyecto */
-        .caracteristicas-proyecto {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin: 16px 0;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .caracteristicas-proyecto span {
-            font-size: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--color-text-muted);
-        }
-        
-        .caracteristicas-proyecto span i {
-            color: var(--color-primary);
-            font-size: 11px;
-        }
-        
-        /* Botón ver más */
-        .ver-mas-container {
-            margin-top: 60px;
-            text-align: center;
-        }
-        
-        .btn-ver-mas {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(28, 182, 152, 0.3);
-        }
-        
-        .btn-ver-mas:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(28, 182, 152, 0.4);
-            gap: 16px;
-        }
-        
-        /* Botones de acción */
-        .btn-demo, .btn-code {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        /* Scroll suave */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Ajuste para el header fixed */
-        body {
-            padding-top: 75px;
-        }
-        
-        @media screen and (max-width: 768px) {
-            body {
-                padding-top: 72px;
-            }
-            
-            .card-overlay i {
-                font-size: 36px;
-            }
-            
-            .caracteristicas-proyecto {
-                gap: 8px;
-            }
-            
-            .caracteristicas-proyecto span {
-                font-size: 10px;
-            }
-        }
-        
-        /* Asegurar que las tecnologías tengan el mismo estilo que en el portafolio */
-        .tecnologias {
-            margin: 15px 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .tech-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        /* Los colores ya están definidos en tu CSS principal, solo aseguramos consistencia */
-        .tech-pill:hover {
-            transform: translateY(-2px);
-        }
+
+/* ============================= */
+/* ESTILOS ESPECÍFICOS PÁGINA DE PROYECTOS */
+/* ============================= */
+
+/* Link activo en el nav (resaltado con el color primario) */
+nav ul li a.active {
+    color: var(--color-primary);
+}
+
+/* Contenedor de imagen con overlay de lupa al hover */
+.card-img {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Capa oscura con blur que aparece sobre la imagen al hover */
+.card-overlay {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;                     /* Invisible por defecto */
+    transition: opacity 0.4s ease;
+}
+
+/* El overlay aparece al hover de la tarjeta */
+.card-proyecto:hover .card-overlay {
+    opacity: 1;
+}
+
+/* Ícono de lupa: empieza pequeño y crece al tamaño normal */
+.card-overlay i {
+    font-size: 48px;
+    color: white;
+    transform: scale(0.5);          /* Empieza al 50% del tamaño */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-proyecto:hover .card-overlay i {
+    transform: scale(1);            /* Crece al tamaño completo con easing elástico */
+}
+
+/* Características adicionales del proyecto: fila de chips con ícono */
+.caracteristicas-proyecto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cada característica: ícono verde + texto gris */
+.caracteristicas-proyecto span {
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-muted);
+}
+
+.caracteristicas-proyecto span i {
+    color: var(--color-primary);
+    font-size: 11px;
+}
+
+/* Contenedor del botón "ver más proyectos" */
+.ver-mas-container {
+    margin-top: 60px;
+    text-align: center;
+}
+
+/* Botón "ver más": cápsula con degradado verde-azul y sombra */
+.btn-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(28, 182, 152, 0.3);
+}
+
+/* Al hover: sube y el gap del ícono se amplía */
+.btn-ver-mas:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(28, 182, 152, 0.4);
+    gap: 16px;                      /* El ícono se aleja del texto al hover */
+}
+
+/* Botones de acción con ícono alineado */
+.btn-demo, .btn-code {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Scroll suave para toda la página (refuerza el del :root) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Espacio superior para el header fijo (refuerza el del body base) */
+body {
+    padding-top: 75px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 72px;
+    }
+
+    /* Ícono de lupa más pequeño en móvil */
+    .card-overlay i {
+        font-size: 36px;
+    }
+
+    .caracteristicas-proyecto {
+        gap: 8px;
+    }
+
+    .caracteristicas-proyecto span {
+        font-size: 10px;
+    }
+}
+
+/* Contenedor de tecnologías (versión página de proyectos) */
+.tecnologias {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Estilo base de las etiquetas de tecnología tipo "pill" (cápsula) */
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+/* Efecto de elevación al pasar el mouse sobre la etiqueta */
+.tech-pill:hover {
+    transform: translateY(-2px);
+}

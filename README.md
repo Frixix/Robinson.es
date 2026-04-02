@@ -37,6 +37,8 @@ Robinson.es
 │  └─ estilo.css
 ├─ doc_js/
 │  └─ script.js
+├─ html/
+│  ├─ proyectos.html
 ├─ img/
 │  ├─ logo.1.png
 │  ├─ logo.2.png
@@ -50,7 +52,7 @@ Robinson.es
 │        ├─ historial_salidas.jpg
 │        └─ registro_producto.jpg
 └─ Hoja de vida/
-   └─ CV_ROBINSON_RODRIGUEZ.pdf.pdf
+   └─ HV_ROBINSON_RODRIGUEZ_desarrollo.pdf
 ```
 
 ## Mejoras recientes

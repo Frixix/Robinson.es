@@ -461,53 +461,61 @@
             <h1>Proyectos</h1>
             <div class="galeria">
 
-                <!-- Proyecto 1 -->
-                <div class="proyecto">
-                    <div class="proyecto-img">
-                        <img 
-                            src="img/proyectos/Inventario_2.0/inventario_inicio.jpg"
-                            alt="Sistema de inventario desarrollado en Python"
-                            onclick="abrirGaleria('inventario')"
-                            style="cursor:pointer;"
-                        >
-                    </div>
 
-                    <div class="proyecto-info">
-                        <h3>Inventario 2.0</h3>
-
-                        <p>
-                            Sistema de gestión de inventario desarrollado en Python
-                            con interfaz Tkinter y base de datos SQLite.
-                        </p>
-
-                        <div class="tecnologias">
-                            <span class="tech-pill tech-python">Python <i class="fa-brands fa-python"></i></span>
-                            <span class="tech-pill tech-tkinter">Tkinter <i class="fa-regular fa-window-maximize"></i></span>
-                            <span class="tech-pill tech-sqlite">SQLite <i class="fa-solid fa-database"></i></span>
+                    <!-- PROYECTO 1 - El que vamos a dejar con el modal  -->
+                    <div class="card-proyecto" data-categoria="python">
+                        <div class="card-img">
+                            <img 
+                                src="img/proyectos/Inventario_2.0/inventario_inicio.jpg"
+                                alt="Sistema de inventario desarrollado en Python"
+                                onclick="abrirGaleria('inventario')"
+                            >
+                            <div class="card-overlay">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </div> 
                         </div>
-
-                        <div class="proyecto-links">
-                            <a href="https://github.com/Frixix/Inventario-2.0#" target="_blank">Código</a>
-                            <a href="javascript:void(0)" onclick="abrirModal('inventario')">Ver detalles</a>
+                        <div class="proyecto-img">
                         </div>
-                        
+                        <div class="card-content">
+                            <h3>Sistema de Inventario 2.0</h3>
+                            <p>Sistema completo de gestión de inventario desarrollado con Python, interfaz gráfica moderna con Tkinter y base de datos SQLite.</p>
+                            
+                            <!-- REUTILIZANDO LAS CLASES DE TECNOLOGÍAS EXISTENTES -->
+                            <div class="tecnologias">
+                                <span class="tech-pill tech-python"><i class="fa-brands fa-python"></i> Python</span>
+                                <span class="tech-pill tech-tkinter"><i class="fa-regular fa-window-maximize"></i> Tkinter</span>
+                                <span class="tech-pill tech-sqlite"><i class="fa-solid fa-database"></i> SQLite</span>
+                                <span class="tech-pill tech-python"><i class="fa-solid fa-chart-line"></i> Reportes</span>
+                            </div>
+                            
+                            <div class="caracteristicas-proyecto">
+                                <span><i class="fa-solid fa-check-circle"></i> CRUD completo</span>
+                                <span><i class="fa-solid fa-check-circle"></i> Exportar a Excel</span>
+                                <span><i class="fa-solid fa-check-circle"></i> Búsqueda avanzada</span>
+                            </div>
+                            
+                            <div class="acciones">
+                                <a href="https://github.com/Frixix/Inventario-2.0" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Proyecto 2 -->
-                <div class="proyecto">
-                    <div class="proyecto-img">
-                        <img 
-                            src="./img/proyectos/Notestack/pantalla_principal.jpg"
-                            alt="Cuaderno virtual desarrollado con JavaScript, HTML y CSS"
-                            onclick="abrirGaleria('notestack')"
-                            style="cursor:pointer;"
-                        >
-                    </div>
-
-                    <div class="proyecto-info">
-                        <h3>NoteStack</h3>
-
+                    <!-- PROYECTO 2 - E-commerce Landing Page -->
+                    <div class="card-proyecto" data-categoria="web javascript">
+                        <div class="card-img">
+                            <img 
+                                src="./img/proyectos/Notestack/pantalla_principal.jpg"
+                                alt="Cuaderno virtual desarrollado con JavaScript, HTML y CSS"
+                                onclick="abrirGaleria('notestack')"
+                            >
+                        <div class="card-overlay">
+                        <div class="card-overlay">
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
+                        </div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>NoteStack</h3>
                         <p>
                             Es una aplicación web tipo SPA desarrollada con HTML, 
                             CSS y JavaScript puro que permite organizar información mediante cuadernos y notas, 
@@ -517,25 +525,73 @@
                             (UI → Controller → Services → Storage), 
                             lo que la hace ligera y escalable.
                         </p>
-
-                        <div class="tecnologias">
-                            <span class="tech-pill tech-html">HTML <i class="fa-brands fa-html5"></i></span>
-                            <span class="tech-pill tech-css">CSS <i class="fa-brands fa-css3-alt"></i></span>
-                            <span class="tech-pill tech-javascript">JavaScript <i class="fa-brands fa-js"></i></span>
-                        </div>
-
-                        <div class="proyecto-links">
-                            <a href="https://github.com/Frixix/NoteStack" target="_blank">Código</a>
-                            <a href="https://frixix.github.io/NoteStack/" target="_blank">Demo</a>
-                            <a href="javascript:void(0)" onclick="abrirModal('notestack')">Ver detalles</a>
+                            <!-- REUTILIZANDO LAS CLASES DE TECNOLOGÍAS EXISTENTES -->
+                            <div class="tecnologias">
+                                <span class="tech-pill tech-html"><i class="fa-brands fa-html5"></i> HTML5</span>
+                                <span class="tech-pill tech-css"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                                <span class="tech-pill tech-javascript"><i class="fa-brands fa-js"></i> JavaScript</span>
+                            </div>
+                            
+                            <div class="caracteristicas-proyecto">
+                                <span><i class="fa-solid fa-check-circle"></i> LocalStorage</span>
+                                <span><i class="fa-solid fa-check-circle"></i> Responsive 100%</span>
+                            </div>
+                            
+                            <div class="acciones">
+                                <a href="https://frixix.github.io/NoteStack/" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
+                                <a href="https://github.com/Frixix/NoteStack" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+
+
+                                        <!-- PROYECTO 3 - TaskFlow App -->
+                    <div class="card-proyecto" data-categoria="javascript fullstack">
+                        <div class="card-img">
+                            <img 
+                                src="./img/proyectos/Solven/solven.jpg"
+                                alt="Solven - App de finanzas personales"
+                                onclick="abrirGaleria('solven')"
+                                style="cursor:pointer;"
+                            >
+                            <div class="card-overlay">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Solven</h3>
+                        <p>
+                            Este proyecto se desarrolla por fases como parte de mi aprendizaje en desarrollo web.
+                            Actualmente cuenta con un MVP funcional construido con JavaScript puro.
+                            Próximamente será migrado a React y conectado a una base de datos en la nube con Supabase.
+                        </p>
+                            <!-- REUTILIZANDO LAS CLASES DE TECNOLOGÍAS EXISTENTES -->
+                            <div class="tecnologias">
+
+                                <span class="tech-pill tech-html">HTML <i class="fa-brands fa-html5"></i></span>
+                                <span class="tech-pill tech-css">CSS <i class="fa-brands fa-css3-alt"></i></span>
+                                <span class="tech-pill tech-javascript">JavaScript <i class="fa-brands fa-js"></i></span>
+
+                            </div>
+                            
+                            <div class="caracteristicas-proyecto">
+                                <span><i class="fa-solid fa-check-circle"></i> Drag & Drop</span>
+                                <span><i class="fa-solid fa-check-circle"></i> Modo oscuro</span>
+                                <span><i class="fa-solid fa-check-circle"></i> Exportar datos</span>
+                            </div>
+                            
+                            <div class="acciones">
+                                <a href="https://github.com/Frixix/Solven" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
+                                <a href="https://frixix.github.io/Solven/" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
+                            </div>
+                        </div>
+                    </div>
 
 
 
 
-                <!-- Proyecto 3 -->
+                <!-- Proyecto 3  Se cambia por completo las card para implementar el nuevo diseño, por lo que este código queda como referencia pero no se utiliza en esta versión final 
                 <div class="proyecto">
                     <div class="proyecto-img">
                         <img 
@@ -568,6 +624,7 @@
                         </div>
                     </div>
                 </div>
+                -->
 
             </div>
         <div class="proyectos-cta">
