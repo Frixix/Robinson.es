@@ -25,7 +25,7 @@
     <div class="contenedor-header">
         <header>
             <div class="logo">
-                <a href="../index.html">R<span class="logo-accent">.</span></a>
+                <a href="../index.html">Proyectos<span class="logo-accent">.</span></a>
             </div>
             <nav id="nav">
                 <ul>
@@ -65,17 +65,19 @@
                 <!-- GRID DE PROYECTOS -->
                 <div class="grid-proyectos" id="grid-proyectos">
 
-                    <!-- PROYECTO 1 - Inventario 2.0 -->
+                    <!-- PROYECTO 1 - El que vamos a dejar con el modal  -->
                     <div class="card-proyecto" data-categoria="python">
                         <div class="card-img">
                             <img 
-                                src="../img/proyectos/Inventario_2.0/inventario_inicio.jpg" 
-                                alt="Sistema de Inventario 2.0"
-                                onclick="abrirGaleria('inventario')">
-
+                                src="../img/proyectos/Inventario_2.0/inventario_inicio.jpg"
+                                alt="Sistema de inventario desarrollado en Python"
+                                onclick="abrirGaleria('inventario')"
+                            >
                             <div class="card-overlay">
                                 <i class="fa-solid fa-magnifying-glass-plus"></i>
-                            </div>
+                            </div> 
+                        </div>
+                        <div class="proyecto-img">
                         </div>
                         <div class="card-content">
                             <h3>Sistema de Inventario 2.0</h3>
@@ -96,8 +98,7 @@
                             </div>
                             
                             <div class="acciones">
-                                <a href="#" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
-                                <a href="#" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
+                                <a href="https://github.com/Frixix/Inventario-2.0" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
                             </div>
                         </div>
                     </div>
@@ -105,7 +106,11 @@
                     <!-- PROYECTO 2 - E-commerce Landing Page -->
                     <div class="card-proyecto" data-categoria="web javascript">
                         <div class="card-img">
-                            <img src="/img/proyectos/Notestack/cuerpo_cuaderno.jpg" alt="NoteStack" onerror="this.src='https://via.placeholder.com/400x220/0f3454/ffffff?text=NoteStack'">
+                            <img 
+                                src="../img/proyectos/Notestack/pantalla_principal.jpg"
+                                alt="Cuaderno virtual desarrollado con JavaScript, HTML y CSS"
+                                onclick="abrirGaleria('notestack')"
+                            >
                         <div class="card-overlay">
                         <div class="card-overlay">
                             <i class="fa-solid fa-magnifying-glass-plus"></i>
@@ -136,16 +141,20 @@
                             </div>
                             
                             <div class="acciones">
-                                <a href="#" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
-                                <a href="#" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
+                                <a href="https://frixix.github.io/NoteStack/" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
+                                <a href="https://github.com/Frixix/NoteStack" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PROYECTO 3 - TaskFlow App -->
+                                                            <!-- PROYECTO 3 - TaskFlow App -->
                     <div class="card-proyecto" data-categoria="javascript fullstack">
                         <div class="card-img">
-                            <img src="/img/proyectos/Solven/solven.jpg" alt="TaskFlow App" onerror="this.src='https://via.placeholder.com/400x220/0f3454/ffffff?text=TaskFlow+App'">
+                            <img 
+                                src="../img/proyectos/Solven/solven.jpg"
+                                alt="Solven - App de finanzas personales"
+                                onclick="abrirGaleria('solven')"
+                            >
                             <div class="card-overlay">
                                 <i class="fa-solid fa-magnifying-glass-plus"></i>
                             </div>
@@ -182,7 +191,10 @@
                     <!-- PROYECTO 4 - BlackBlade Barbería -->
                     <div class="card-proyecto" data-categoria="web javascript">
                         <div class="card-img">
-                            <img src="../img/proyectos/blackblade/inicio.jpg" alt="BlackBlade Barbería - Página web profesional" onerror="this.src='https://via.placeholder.com/400x220/0f3454/ffffff?text=BlackBlade+Barberia'">
+                            <img    src="../img/proyectos/blackblade/inicio.jpg" 
+                                    alt="BlackBlade Barbería - Página web profesional" 
+                                    onerror="this.src='https://via.placeholder.com/400x220/0f3454/ffffff?text=BlackBlade+Barberia'"
+                                    onclick="abrirGaleria('blackblade')">
                             <div class="card-overlay">
                                 <i class="fa-solid fa-magnifying-glass-plus"></i>
                             </div>
@@ -214,39 +226,6 @@
                             <div class="acciones">
                                 <a href="https://frixix.github.io/BlackBlade/" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
                                 <a href="https://github.com/Frixix/BlackBlade" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PROYECTO 5 - Portfolio Personal -->
-                    <div class="card-proyecto" data-categoria="web fullstack">
-                        <div class="card-img">
-                            <img src="../img/proyectos/portfolio.jpg" alt="Portfolio Personal" onerror="this.src='https://via.placeholder.com/400x220/0f3454/ffffff?text=Portfolio+Personal'">
-                            <div class="card-overlay">
-                                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h3>Portfolio Personal</h3>
-                            <p>Mi portafolio profesional con diseño moderno, animaciones suaves, responsive y optimizado para SEO.</p>
-                            
-                            <!-- REUTILIZANDO LAS CLASES DE TECNOLOGÍAS EXISTENTES -->
-                            <div class="tecnologias">
-                                <span class="tech-pill tech-html"><i class="fa-brands fa-html5"></i> HTML5</span>
-                                <span class="tech-pill tech-css"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
-                                <span class="tech-pill tech-javascript"><i class="fa-brands fa-js"></i> JavaScript</span>
-                                <span class="tech-pill tech-css"><i class="fa-solid fa-mobile-alt"></i> Responsive</span>
-                            </div>
-                            
-                            <div class="caracteristicas-proyecto">
-                                <span><i class="fa-solid fa-check-circle"></i> Diseño moderno</span>
-                                <span><i class="fa-solid fa-check-circle"></i> Animaciones CSS</span>
-                                <span><i class="fa-solid fa-check-circle"></i> SEO optimizado</span>
-                            </div>
-                            
-                            <div class="acciones">
-                                <a href="#" class="btn-demo" target="_blank"><i class="fa-solid fa-eye"></i> Ver proyecto</a>
-                                <a href="#" class="btn-code" target="_blank"><i class="fa-brands fa-github"></i> Código</a>
                             </div>
                         </div>
                     </div>
@@ -302,7 +281,7 @@
                         <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                     <p><i class="fa-regular fa-envelope"></i> robinson@email.com</p>
-                    <p><i class="fa-solid fa-phone"></i> +57 300 000 0000</p>
+                    <p><i class="fa-solid fa-phone"></i> +57 3104932777</p>
                 </div>
             </div>
             <div class="grupo-2">
@@ -317,143 +296,6 @@
     <script>
 
     </script>
-
-
-
-        <div id="modal-inventario" class="modal">
-            <div class="modal-contenido">
-
-                <!-- CERRAR -->
-                <span class="cerrar" onclick="cerrarModal('inventario')">×</span>
-
-                <!-- TITULO -->
-                <h2>Inventario 2.0</h2>
-
-                <!-- DESCRIPCIÓN -->
-                <p>
-                    Sistema de gestión de inventario desarrollado en Python
-                    con interfaz Tkinter y base de datos SQLite.
-                </p>
-
-                <!-- TECNOLOGÍAS -->
-                <div class="tecnologias">
-                    <span class="tech-pill tech-python">Python <i class="fa-brands fa-python"></i></span>
-                    <span class="tech-pill tech-tkinter">Tkinter <i class="fa-regular fa-window-maximize"></i></span>
-                    <span class="tech-pill tech-sqlite">SQLite <i class="fa-solid fa-database"></i></span>
-                </div>
-
-                <!-- CARACTERÍSTICAS -->
-                <h3>Características</h3>
-                <ul>
-                    <li>CRUD completo de productos</li>
-                    <li>Control de stock en tiempo real</li>
-                    <li>Historial de movimientos</li>
-                    <li>Exportación de datos</li>
-                </ul>
-
-                <!-- IMAGEN / PREVIEW -->
-                <div class="modal-preview">
-                    <img src="./img/proyectos/Inventario_2.0/inventario_inicio.jpg" alt="Inventario App">
-                </div>
-
-                <!-- BOTONES (CLAVE PARA PORTAFOLIO) -->
-                <div class="modal-acciones">
-                    <a href="https://github.com/Frixix/Inventario-2.0" target="_blank" class="btn-code">
-                        <i class="fa-brands fa-github"></i> Código
-                    </a>
-
-                    <a href="javascript:void(0)" onclick="abrirGaleria('inventario')" class="btn-demo">
-                        <i class="fa-solid fa-images"></i> Ver imágenes
-                    </a>
-                </div>
-
-                <!-- EXTRA PRO (VENTA) -->
-                <div class="modal-cta">
-                    <p>¿Quieres un sistema similar para tu negocio?</p>
-                    <a href="https://wa.me/573104932777" target="_blank" class="btn-whatsapp">
-                        <i class="fa-brands fa-whatsapp"></i> Solicitar desarrollo
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-    <!-- MODAL NoteStack -->
-    <div id="modal-notestack" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar" onclick="cerrarModal('notestack')">×</span>
-
-            <h2>NoteStack</h2>
-
-            <p>
-                Aplicación web SPA desarrollada con HTML, CSS y JavaScript puro
-                para organizar información mediante cuadernos y notas.
-            </p>
-
-            <h3>Características</h3>
-            <ul>
-                <li>Creación y edición de cuadernos</li>
-                <li>Creación, búsqueda y eliminación de notas</li>
-                <li>Guardado automático en LocalStorage</li>
-                <li>Arquitectura modular y ligera</li>
-            </ul>
-
-            <h3>Estructura del proyecto</h3>
-
-            <pre>
-                UI
-                │
-                ├── Controller
-                │
-                ├── Services
-                │
-                └── Storage (LocalStorage)
-            </pre>
-        </div>
-    </div>
-
-    <!-- MODAL Solven -->
-    <div id="modal-solven" class="modal">
-        <div class="modal-contenido">
-            <span class="cerrar" onclick="cerrarModal('solven')">×</span>
-
-            <h2>Solven</h2>
-
-            <p>
-                Aplicación web personal para llevar el control de ingresos, gastos,
-                balance, categorías y resúmenes financieros. Desarrollada por fases
-                como parte de mi aprendizaje en desarrollo web.
-            </p>
-
-            <h3>Funcionalidades actuales (MVP)</h3>
-            <ul>
-                <li>Registro de ingresos y gastos con categorías dinámicas</li>
-                <li>Eliminación y edición de transacciones</li>
-                <li>Cálculo automático de ingresos, gastos y balance general</li>
-                <li>Persistencia de datos con LocalStorage</li>
-                <li>Formato de moneda en pesos colombianos (COP)</li>
-                <li>Fecha y hora automática con orden por más reciente</li>
-                <li>Filtros por tipo, categoría y descripción</li>
-            </ul>
-
-            <h3>Hoja de ruta</h3>
-            <pre>
-                Fase 1 · Actual  →  HTML + CSS + JavaScript + LocalStorage
-                Fase 2           →  IndexedDB
-                Fase 3           →  React
-                Fase 4           →  Supabase + Autenticación + Nube
-            </pre>
-
-            <h3>Próximas mejoras</h3>
-            <ul>
-                <li>Dashboard con gráficas</li>
-                <li>Presupuesto mensual y metas de ahorro</li>
-                <li>Exportación de datos</li>
-                <li>Modo oscuro</li>
-                <li>Sincronización entre dispositivos</li>
-            </ul>
-        </div>
-    </div>
 
     <!-- MODAL GALERÍA DE IMÁGENES -->
     <div id="modal-galeria" class="modal">

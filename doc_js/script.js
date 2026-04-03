@@ -71,7 +71,30 @@ const proyectosData = {
             "Gestión de transacciones.",
             "Filtros por categoría."
         ]
+    },
+
+    blackblade: {
+        modalId: "modal-blackblade",
+        imagenes: [
+            "../img/proyectos/blackblade/inicio.jpg",
+            "../img/proyectos/blackblade/servicios.jpg",
+            "../img/proyectos/blackblade/agendar-cita.jpg",
+            "../img/proyectos/blackblade/galeria.jpg",
+            "../img/proyectos/blackblade/ubicación.jpg",
+            "../img/proyectos/blackblade/agendar-cita.jpg",
+            "../img/proyectos/blackblade/footer.jpg"
+        ],
+        descripciones: [
+            "Pantalla principal del sitio BlackBlade con presentación visual y llamado a la acción.",
+            "Sección de servicios donde se detallan los cortes y tratamientos disponibles.",
+            "Formulario para agendar citas de manera rápida y sencilla.",
+            "Galería de trabajos realizados que muestra resultados y estilos.",
+            "Sección de ubicación con mapa y datos del local.",
+            "Sistema de reserva de citas con interfaz amigable para el usuario.",
+            "Pie de página con información adicional, redes sociales y contacto."
+        ]
     }
+
 };
 
 // =============================
