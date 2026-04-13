@@ -98,7 +98,7 @@ const proyectosData = {
 };
 
 // =============================
-// ESTADO GLOBAL
+// ESTADO GLOBAL 
 // =============================
 
 const estado = {

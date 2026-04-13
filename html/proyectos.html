@@ -146,7 +146,7 @@
                         </div>
                     </div>
 
-                                                            <!-- PROYECTO 3 - TaskFlow App -->
+                <!-- Solven -->
                     <div class="card-proyecto" data-categoria="javascript fullstack">
                         <div class="card-img">
                             <img 
@@ -292,9 +292,168 @@
         </div>
     </footer>
 
+    <!-- MODAL Inventario -->
+    <div id="modal-inventario" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('inventario')">×</span>
+
+            <h2>Inventario 2.0</h2>
+
+            <p>
+                Sistema de gestión de inventario desarrollado en Python
+                con interfaz Tkinter y base de datos SQLite.
+            </p>
+
+            <h3>Características</h3>
+            <ul>
+                <li>Registro de productos</li>
+                <li>Control de stock</li>
+                <li>Movimientos de entrada y salida</li>
+                <li>Historial de inventario</li>
+            </ul>
+
+            <h3>Modelo de base de datos</h3>
+
+            <pre>
+                PRODUCTOS
+                ---------
+                id (PK)
+                codigo
+                nombre
+                precio_venta
+                stock_actual
+                stock_minimo
+
+                MOVIMIENTOS
+                -----------
+                producto_id (FK)
+                cliente_id (FK)
+                tipo_movimiento
+                cantidad
+                fecha
+            </pre>
+        </div>
+    </div>
+
     <script>
 
     </script>
+
+    <!-- MODAL NoteStack -->
+    <div id="modal-notestack" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('notestack')">×</span>
+
+            <h2>NoteStack</h2>
+
+            <p>
+                Aplicación web SPA desarrollada con HTML, CSS y JavaScript puro
+                para organizar información mediante cuadernos y notas.
+            </p>
+
+            <h3>Características</h3>
+            <ul>
+                <li>Creación y edición de cuadernos</li>
+                <li>Creación, búsqueda y eliminación de notas</li>
+                <li>Guardado automático en LocalStorage</li>
+                <li>Arquitectura modular y ligera</li>
+            </ul>
+
+            <h3>Estructura del proyecto</h3>
+
+            <pre>
+            UI
+            │
+            ├── Controller
+            │
+            ├── Services
+            │
+            └── Storage (LocalStorage)
+            </pre>
+        </div>
+    </div>
+
+    <div id="modal-solven" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('solven')">×</span>
+            <h2>Solven</h2>
+            <p>
+                Aplicación web personal para llevar el control de ingresos, gastos,
+                balance, categorías y resúmenes financieros. Desarrollada por fases
+                como parte de mi aprendizaje en desarrollo web.
+            </p>
+
+            <h3>Funcionalidades actuales (MVP)</h3>
+            <ul>
+                <li>Registro de ingresos y gastos con categorías dinámicas</li>
+                <li>Eliminación y edición de transacciones</li>
+                <li>Cálculo automático de ingresos, gastos y balance general</li>
+                <li>Persistencia de datos con LocalStorage</li>
+                <li>Formato de moneda en pesos colombianos (COP)</li>
+                <li>Fecha y hora automática con orden por más reciente</li>
+                <li>Filtros por tipo, categoría y descripción</li>
+            </ul>
+
+            <h3>Hoja de ruta</h3>
+            <pre>
+                Fase 1 · Actual  →  HTML + CSS + JavaScript + LocalStorage
+                Fase 2           →  IndexedDB
+                Fase 3           →  React
+                Fase 4           →  Supabase + Autenticación + Nube
+            </pre>
+
+            <h3>Próximas mejoras</h3>
+            <ul>
+                <li>Dashboard con gráficas</li>
+                <li>Presupuesto mensual y metas de ahorro</li>
+                <li>Exportación de datos</li>
+                <li>Modo oscuro</li>
+                <li>Sincronización entre dispositivos</li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- MODAL BLACKBLADE 3 -->
+    <div id="modal-blackblade" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarModal('blackblade')">×</span>
+        <h2>BlackBlade</h2>
+
+        <p>
+            Landing page moderna para barberías, enfocada en mejorar 
+            su presencia digital y facilitar el agendamiento de citas 
+            vía WhatsApp.
+        </p>
+
+        <h3>Características</h3>
+        <ul>
+            <li>Diseño responsive y profesional</li>
+            <li>Agendamiento directo por WhatsApp</li>
+            <li>Sección de servicios con precios</li>
+            <li>Galería de trabajos</li>
+            <li>Ubicación integrada con Google Maps</li>
+            <li>Formulario de contacto</li>
+        </ul>
+
+        <h3>Tecnologías</h3>
+        <ul>
+            <li>HTML5 + CSS3</li>
+            <li>Google Fonts (Inter)</li>
+            <li>Font Awesome</li>
+        </ul>
+
+        <h3>Usos del proyecto</h3>
+        <pre>
+            Plantilla reutilizable  →  Para cualquier barbería
+            Portafolio              →  Proyecto personal
+            Servicio a clientes     →  Base para negocios locales
+        </pre>
+        </div>
+    </div>
 
     <!-- MODAL GALERÍA DE IMÁGENES -->
     <div id="modal-galeria" class="modal">
