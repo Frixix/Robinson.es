@@ -1,7 +1,7 @@
 // =============================
 // MENU RESPONSIVE
 // =============================
-
+const BASE = "/Robinson.es/";
 let menuVisible = false;
 
 function mostrarOcultarMenu() {
@@ -28,10 +28,10 @@ const proyectosData = {
     inventario: {
         modalId: "modal-inventario",
         imagenes: [
-            "/img/proyectos/Inventario_2.0/inventario_inicio.jpg",
-            "/img/proyectos/Inventario_2.0/entrada_inventario.jpg",
-            "/img/proyectos/Inventario_2.0/salida_inventario.jpg",
-            "/img/proyectos/Inventario_2.0/historial_salidas.jpg"
+            `${BASE}img/proyectos/Inventario_2.0/inventario_inicio.jpg`,
+            `${BASE}img/proyectos/Inventario_2.0/entrada_inventario.jpg`,
+            `${BASE}img/proyectos/Inventario_2.0/salida_inventario.jpg`,
+            `${BASE}img/proyectos/Inventario_2.0/historial_salidas.jpg`
         ],
         descripciones: [
             "Pantalla principal del sistema de inventario.",
@@ -44,10 +44,10 @@ const proyectosData = {
     notestack: {
         modalId: "modal-notestack",
         imagenes: [
-            "/img/proyectos/Notestack/pantalla_principal.jpg",
-            "/img/proyectos/Notestack/cuaderno.jpg",
-            "/img/proyectos/Notestack/notas.jpg",
-            "../img/proyectos/Notestack/cuerpo_cuaderno.jpg"
+            `${BASE}img/proyectos/Notestack/pantalla_principal.jpg`,
+            `${BASE}img/proyectos/Notestack/cuaderno.jpg`,
+            `${BASE}img/proyectos/Notestack/notas.jpg`,
+            `${BASE}img/proyectos/Notestack/cuerpo_cuaderno.jpg`
         ],
         descripciones: [
             "Pantalla principal de NoteStack.",
@@ -60,10 +60,10 @@ const proyectosData = {
     solven: {
         modalId: "modal-solven",
         imagenes: [
-            "/img/proyectos/Solven/solven.jpg",
-            "/img/proyectos/Solven/pantalla-principal.jpg",
-            "/img/proyectos/Solven/area-de-transacción.jpg",
-            "/img/proyectos/Solven/filtro-categoria.jpg"
+            `${BASE}img/proyectos/Solven/solven.jpg`,
+            `${BASE}img/proyectos/Solven/pantalla-principal.jpg`,
+            `${BASE}img/proyectos/Solven/area-de-transacción.jpg`,
+            `${BASE}img/proyectos/Solven/filtro-categoria.jpg`
         ],
         descripciones: [
             "Vista general de Solven.",
