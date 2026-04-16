@@ -76,13 +76,13 @@ const proyectosData = {
     blackblade: {
         modalId: "modal-blackblade",
         imagenes: [
-            "../img/proyectos/blackblade/inicio.jpg",
-            "../img/proyectos/blackblade/servicios.jpg",
-            "../img/proyectos/blackblade/agendar-cita.jpg",
-            "../img/proyectos/blackblade/galeria.jpg",
-            "../img/proyectos/blackblade/ubicación.jpg",
-            "../img/proyectos/blackblade/agendar-cita.jpg",
-            "../img/proyectos/blackblade/footer.jpg"
+            `${BASE}img/proyectos/blackblade/inicio.jpg`,
+            `${BASE}img/proyectos/blackblade/servicios.jpg`,
+            `${BASE}img/proyectos/blackblade/agendar-cita.jpg`,
+            `${BASE}img/proyectos/blackblade/galeria.jpg`,
+            `${BASE}img/proyectos/blackblade/ubicación.jpg`,
+            `${BASE}img/proyectos/blackblade/agendar-cita.jpg`,
+            `${BASE}img/proyectos/blackblade/footer.jpg`
         ],
         descripciones: [
             "Pantalla principal del sitio BlackBlade con presentación visual y llamado a la acción.",
