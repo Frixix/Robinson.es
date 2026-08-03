@@ -1,7 +1,10 @@
 // =============================
 // MENU RESPONSIVE
 // =============================
-const BASE = "/Robinson.es/";
+const BASE = window.location.hostname === "frixix.github.io"
+    ? "/Robinson.es/"
+    : "/";
+
 let menuVisible = false;
 
 function mostrarOcultarMenu() {
